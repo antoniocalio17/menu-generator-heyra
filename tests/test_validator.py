@@ -1,7 +1,7 @@
 import unittest
 
 from engine.catalogue import Catalogue
-from engine.models import WeeklyPlan
+from engine.output_format import WeeklyPlan
 from engine.validator import WEEKLY_BUDGET_EUR, PlanValidationError, fix_budget, validate
 
 
