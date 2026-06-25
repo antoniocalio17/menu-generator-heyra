@@ -4,8 +4,8 @@ import unittest
 from unittest.mock import MagicMock, patch
 
 from engine.catalogue import Catalogue
-from engine.models import WeeklyPlan
-from engine.planner import PlannerError, _format_products, _prompt_messages, generate
+from engine.output_format import WeeklyPlan
+from engine.groq_llama import PlannerError, _format_products, _prompt_messages, generate
 
 
 def _make_product(**kwargs) -> dict:
@@ -114,7 +114,7 @@ _FAKE_ENV = {"GROQ_API_KEY": "test-key"}
 
 class TestGenerate(unittest.TestCase):
     @patch.dict(os.environ, _FAKE_ENV)
-    @patch("engine.planner.OpenAI")
+    @patch("engine.groq_llama.OpenAI")
     def test_returns_weekly_plan(self, mock_cls: MagicMock) -> None:
         mock_cls.return_value.chat.completions.create.return_value.choices[
             0
@@ -123,7 +123,7 @@ class TestGenerate(unittest.TestCase):
         self.assertIsInstance(result, WeeklyPlan)
 
     @patch.dict(os.environ, _FAKE_ENV)
-    @patch("engine.planner.OpenAI")
+    @patch("engine.groq_llama.OpenAI")
     def test_retries_on_bad_schema(self, mock_cls: MagicMock) -> None:
         invalid = json.dumps({"week_start": "2024-01-15"})
         mock_cls.return_value.chat.completions.create.side_effect = [
@@ -135,7 +135,7 @@ class TestGenerate(unittest.TestCase):
         self.assertEqual(mock_cls.return_value.chat.completions.create.call_count, 2)
 
     @patch.dict(os.environ, _FAKE_ENV)
-    @patch("engine.planner.OpenAI")
+    @patch("engine.groq_llama.OpenAI")
     def test_raises_after_max_retries(self, mock_cls: MagicMock) -> None:
         mock_cls.return_value.chat.completions.create.return_value.choices[
             0
