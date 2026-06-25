@@ -2,7 +2,7 @@ import unittest
 
 from engine.catalogue import Catalogue
 from engine.exporter import WeekSummary, build_summary, summary_to_dict, to_markdown
-from engine.models import WeeklyPlan
+from engine.output_format import WeeklyPlan
 
 _DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 
