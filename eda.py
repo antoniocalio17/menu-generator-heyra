@@ -6,8 +6,9 @@ Prints a summary of each ingredient group and the assigned cuisine tag,
 then writes the enriched products.csv in-place (adds cuisine_tag column).
 """
 
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 CSV_PATH = Path(__file__).parent / "data" / "products.csv"
 

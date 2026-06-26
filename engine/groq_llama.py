@@ -48,10 +48,6 @@ class NamingResponse(BaseModel):
     vegetarian: Annotated[list[NamedDish], Field(min_length=5, max_length=5)]
 
 
-# ---------------------------------------------------------------------------
-# Prompt building
-# ---------------------------------------------------------------------------
-
 def _format_dish(dish: ComposedDish, idx: int) -> str:
     lines = [f"Dish {idx} [{dish.cuisine}]"]
     for product, qty in dish.products:
@@ -75,7 +71,8 @@ def _prompt(
         "(e.g. pan-seared, slow-cooked, roasted, marinated) and how the components come together. "
         "Be concise and practical. Do NOT describe the eating experience, do NOT add generic "
         "closing sentences like 'creating a delicious meal' or 'satisfying and flavorful'.\n"
-        "3. Return the ingredient IDs exactly as given — you may drop one if it truly does not belong\n"
+        "3. Return the ingredient IDs exactly as given — you may drop one if it truly does not"
+        " belong\n"
         "4. Mark valid=false ONLY if the combination is genuinely inedible or absurd as a savoury "
         "main dish (e.g. candy, ice cream, or confectionery mixed with proteins and carbs). "
         "Provide a brief reason when marking invalid.\n"
@@ -95,11 +92,13 @@ def _prompt(
         'Return a JSON object with exactly this structure:\n'
         '{\n'
         '  "meat": [\n'
-        '    {"dish_name": "...", "description": "...", "ingredients": [id1, id2, id3, id4], "valid": true},\n'
+        '    {"dish_name": "...", "description": "...", "ingredients": [id1, id2, id3, id4],'
+        ' "valid": true},\n'
         '    ... (5 objects total, one per day Mon-Fri)\n'
         '  ],\n'
         '  "vegetarian": [\n'
-        '    {"dish_name": "...", "description": "...", "ingredients": [id1, id2, id3, id4], "valid": true},\n'
+        '    {"dish_name": "...", "description": "...", "ingredients": [id1, id2, id3, id4],'
+        ' "valid": true},\n'
         '    ... (5 objects total, one per day Mon-Fri)\n'
         '  ]\n'
         '}\n'
@@ -119,16 +118,13 @@ def _prompt(
     ]
 
 
-# ---------------------------------------------------------------------------
-# Validation against composed sets
-# ---------------------------------------------------------------------------
-
 def _validate_ids(
     naming: NamingResponse,
     meat_dishes: list[ComposedDish],
     veg_dishes: list[ComposedDish],
     catalogue: Catalogue,
 ) -> list[str]:
+    """Validate the ingredient in the llm response."""
     errors: list[str] = []
     for track_name, named_list, composed_list in (
         ("meat", naming.meat, meat_dishes),
@@ -148,33 +144,35 @@ def _validate_ids(
                     )
     return errors
 
-
-# ---------------------------------------------------------------------------
-# Plan assembly
-# ---------------------------------------------------------------------------
-
 def _assemble_plan(
     week_start: str,
     meat_dishes: list[ComposedDish],
     naming: NamingResponse,
     veg_dishes: list[ComposedDish],
+    flagged: dict[str, list[int]] | None = None,
 ) -> WeeklyPlan:
-    def build_track(dishes: list[ComposedDish], named: list[NamedDish]) -> dict:
-        return {
-            day: dishes[i].to_dish(named[i].dish_name, named[i].description).model_dump()
-            for i, day in enumerate(DAYS)
-        }
+    flagged = flagged or {}
+
+    def build_track(dishes: list[ComposedDish], named: list[NamedDish], track: str) -> dict:
+        result = {}
+        for i, day in enumerate(DAYS):
+            dish = dishes[i].to_dish(named[i].dish_name, named[i].description)
+            if i in flagged.get(track, []):
+                dish = dish.model_copy(update={
+                    "needs_review": True,
+                    "chef_note": (
+                        "This dish was flagged as potentially incoherent. "
+                        "Please modify or at least review before serving."
+                    ),
+                })
+            result[day] = dish.model_dump()
+        return result
 
     return WeeklyPlan.model_validate({
         "week_start": week_start,
-        "meat": build_track(meat_dishes, naming.meat),
-        "vegetarian": build_track(veg_dishes, naming.vegetarian),
+        "meat": build_track(meat_dishes, naming.meat, "meat"),
+        "vegetarian": build_track(veg_dishes, naming.vegetarian, "vegetarian"),
     })
-
-
-# ---------------------------------------------------------------------------
-# Main entry point
-# ---------------------------------------------------------------------------
 
 def generate(week_start: str, catalogue: Catalogue | None = None) -> WeeklyPlan:
     if catalogue is None:
@@ -222,6 +220,14 @@ def generate(week_start: str, catalogue: Catalogue | None = None) -> WeeklyPlan:
             logger.error("Groq API error on attempt %d: %s", attempt, e)
             raise PlannerError(f"Groq API error: {e}") from e
 
+        if response.usage:
+            logger.info(
+                "tokens attempt=%d prompt=%d completion=%d total=%d",
+                attempt,
+                response.usage.prompt_tokens,
+                response.usage.completion_tokens,
+                response.usage.total_tokens,
+            )
         last_raw = response.choices[0].message.content or ""
 
         try:
@@ -251,14 +257,14 @@ def generate(week_start: str, catalogue: Catalogue | None = None) -> WeeklyPlan:
         if invalid["meat"] or invalid["vegetarian"]:
             if attempt == _MAX_RETRIES:
                 # Last attempt — accept whatever we have rather than failing completely.
-                # The chef can fix individual dishes via the Edit button.
+                # Flag the offending dishes so the chef knows to review them.
                 logger.warning(
                     "Accepting plan with %d flagged dish(es) after %d attempts — "
                     "re-composition exhausted",
                     len(invalid["meat"]) + len(invalid["vegetarian"]),
                     attempt,
                 )
-                return _assemble_plan(week_start, meat_dishes, naming, veg_dishes)
+                return _assemble_plan(week_start, meat_dishes, naming, veg_dishes, flagged=invalid)
 
             for i in invalid["meat"]:
                 seen = [meat_dishes[j].ingredient_set() for j in range(5) if j != i]

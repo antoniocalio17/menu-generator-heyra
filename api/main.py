@@ -19,6 +19,7 @@ from engine.exporter import build_summary, summary_to_dict
 from engine.fallback import FallbackError, build_fallback_plan
 from engine.groq_llama import PlannerError, generate
 from engine.output_format import WeeklyPlan
+from engine.suggester import rename_dish, suggest_substitutes
 from engine.validator import PlanValidationError, fix_budget, validate
 
 MENUS_DIR = Path(__file__).parent.parent / "data" / "menus"
@@ -112,6 +113,7 @@ class IngredientPayload(BaseModel):
 
 class DishUpdate(BaseModel):
     dish_name: str
+    description: str = ""
     ingredients: list[IngredientPayload]
 
 
@@ -130,6 +132,7 @@ def update_dish(year: int, week: int, track: str, day: str, body: DishUpdate) ->
     data = json.loads(path.read_text())
     data[track][day] = {
         "dish_name": body.dish_name,
+        "description": body.description,
         "ingredients": [
             {"product_id": i.product_id, "quantity_g": i.quantity_g}
             for i in body.ingredients
@@ -149,6 +152,73 @@ def update_dish(year: int, week: int, track: str, day: str, body: DishUpdate) ->
     path.write_text(plan.model_dump_json())
     logger.info("Dish updated — year=%d week=%d %s/%s", year, week, track, day)
     return summary_to_dict(build_summary(plan, catalogue), week)
+
+
+# ---------------------------------------------------------------------------
+# AI ingredient substitution suggestions
+# ---------------------------------------------------------------------------
+
+
+class SuggestRequest(BaseModel):
+    track: str
+    target_product_id: int
+    ingredients: list[IngredientPayload]
+
+
+@app.post("/api/suggest")
+def suggest(body: SuggestRequest) -> dict:
+    """Return AI-ranked substitute candidates for one ingredient slot."""
+    if body.track not in ("meat", "vegetarian"):
+        raise HTTPException(400, f"Unknown track: '{body.track}'")
+
+    ingredients = [
+        {"product_id": i.product_id, "quantity_g": i.quantity_g}
+        for i in body.ingredients
+    ]
+
+    try:
+        candidates = suggest_substitutes(
+            ingredients, body.target_product_id, body.track, catalogue
+        )
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+    except Exception as e:
+        logger.error("Suggester error: %s", e)
+        raise HTTPException(503, "AI suggestion unavailable — try again in a moment") from e
+
+    logger.info(
+        "Suggest — track=%s target=%d candidates=%d",
+        body.track, body.target_product_id, len(candidates),
+    )
+    return {"candidates": candidates}
+
+
+class RenameRequest(BaseModel):
+    track: str
+    ingredients: list[IngredientPayload]
+
+
+@app.post("/api/rename-dish")
+def rename(body: RenameRequest) -> dict:
+    """Re-generate dish name and description after an ingredient swap."""
+    if body.track not in ("meat", "vegetarian"):
+        raise HTTPException(400, f"Unknown track: '{body.track}'")
+
+    ingredients = [
+        {"product_id": i.product_id, "quantity_g": i.quantity_g}
+        for i in body.ingredients
+    ]
+
+    try:
+        result = rename_dish(ingredients, body.track, catalogue)
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from e
+    except Exception as e:
+        logger.error("Rename error: %s", e)
+        raise HTTPException(503, "AI rename unavailable — try again in a moment") from e
+
+    logger.info("Rename — track=%s → %s", body.track, result["dish_name"])
+    return result
 
 
 # ---------------------------------------------------------------------------

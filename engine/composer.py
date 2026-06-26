@@ -11,6 +11,7 @@ The LLM is NOT involved here — it receives the composed dishes and only names 
 import logging
 import random
 from dataclasses import dataclass, field
+
 from engine.catalogue import Catalogue, Product
 from engine.constants import CUISINE_ROTATION, DAYS
 from engine.output_format import Dish, Ingredient

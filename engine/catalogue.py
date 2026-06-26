@@ -108,6 +108,21 @@ class Catalogue:
         df = df.sort_values("cost_per_100g_eur")
         return cast(list[Product], df[_COLUMNS].to_dict("records"))
 
+    def get_products_by_group(
+        self,
+        group: str,
+        track: str,
+        exclude_ids: set[int] | None = None,
+        limit: int = 20,
+    ) -> list[Product]:
+        """All available products in the given ingredient_group, filtered by track."""
+        df = self._df[self._df["ingredient_group"] == group].copy()
+        if track == "vegetarian":
+            df = df[df["dietary_class"].isin(VEGETARIAN_CLASSES)]
+        if exclude_ids:
+            df = df[df["product_id"].map(lambda pid: pid not in exclude_ids)]
+        return cast(list[Product], df[_COLUMNS].head(limit).to_dict("records"))
+
     def get_all_products(self) -> list[Product]:
         return cast(list[Product], self._df[_COLUMNS].to_dict("records"))
 

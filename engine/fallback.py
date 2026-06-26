@@ -9,6 +9,7 @@ from pathlib import Path
 
 from engine.constants import DAYS
 from engine.output_format import Dish, WeeklyPlan
+
 logger = logging.getLogger(__name__)
 
 

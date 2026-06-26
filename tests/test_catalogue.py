@@ -6,7 +6,8 @@ from engine.catalogue import (
     Catalogue,
     IngredientInput,
 )
-from engine.constants import DISH_ROLES as _DISH_ROLES, PROTEIN_ROLE as _PROTEIN_ROLE
+from engine.constants import DISH_ROLES as _DISH_ROLES
+from engine.constants import PROTEIN_ROLE as _PROTEIN_ROLE
 
 
 class TestCatalogue(unittest.TestCase):

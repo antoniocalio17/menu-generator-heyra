@@ -2,8 +2,8 @@ import unittest
 from typing import cast
 
 from engine.catalogue import Catalogue, Product
-from engine.composer import ComposedDish, ComposerError, compose_week
-from engine.constants import CUISINE_ROTATION, DAYS, MEAT_GROUPS, VEGETARIAN_CLASSES
+from engine.composer import ComposedDish, compose_week
+from engine.constants import CUISINE_ROTATION, MEAT_GROUPS
 from engine.output_format import Dish
 
 

@@ -9,6 +9,7 @@ from datetime import date
 from engine.catalogue import Catalogue, Product
 from engine.constants import DAYS
 from engine.output_format import Dish, TrackPlan, WeeklyPlan
+
 _ALLERGEN_LABELS: dict[str, str] = {
     "allergen_gluten": "gluten",
     "allergen_nuts": "nuts",

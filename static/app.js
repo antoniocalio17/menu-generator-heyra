@@ -4,7 +4,7 @@ let currentWeek = getISOWeek(new Date());
 let menuData = null;
 let catalogue = [];
 
-let modalContext = { track: null, day: null };
+let modalContext = { track: null, day: null, onSuggest: null };
 
 // Init
 document.addEventListener('DOMContentLoaded', async () => {
@@ -100,6 +100,7 @@ async function generateWeek() {
 async function saveDish(track, day) {
   const card = document.getElementById(`card-${track}-${day}`);
   const nameInput = card.querySelector('.dish-name-input');
+  const descInput = card.querySelector('.dish-description-input');
   const ingRows = card.querySelectorAll('.ing-row');
   const errDiv = card.querySelector('.edit-errors');
 
@@ -115,6 +116,7 @@ async function saveDish(track, day) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       dish_name: nameInput.value.trim(),
+      description: descInput ? descInput.value : '',
       ingredients,
     }),
   });
@@ -241,7 +243,7 @@ function buildDishCard(track, day, dish) {
   infoBtn.onclick = () => openDetails(dish);
 
   const editBtn = el('button', 'edit-btn', 'Edit');
-  editBtn.onclick = () => switchToEdit(card, view, editPane);
+  editBtn.onclick = () => switchToEdit(view, editPane);
 
   viewActions.appendChild(infoBtn);
   viewActions.appendChild(editBtn);
@@ -256,14 +258,27 @@ function buildDishCard(track, day, dish) {
   nameInput.value = dish.dish_name;
   editPane.appendChild(nameInput);
 
+  const descInput = document.createElement('input');
+  descInput.type = 'hidden';
+  descInput.className = 'dish-description-input';
+  descInput.value = dish.description || '';
+  editPane.appendChild(descInput);
+
+  // Shared suggestion panel (updated whenever an "AI hint" button is clicked)
+  const suggestPanel = el('div', 'suggestions-panel hidden');
+
   const ingEditor = el('div', 'ingredient-editor');
+  const onSuggest = (pid, name) =>
+    loadSuggestions(track, ingEditor, suggestPanel, nameInput, descInput, pid, name);
   dish.ingredients.forEach(ing => {
-    ingEditor.appendChild(buildIngRow(ing.product_id, ing.name, ing.quantity_g));
+    ingEditor.appendChild(buildIngRow(ing.product_id, ing.name, ing.quantity_g, onSuggest));
   });
   editPane.appendChild(ingEditor);
 
+  editPane.appendChild(suggestPanel);
+
   const addBtn = el('button', 'add-ing-btn', '+ Add ingredient');
-  addBtn.onclick = () => openModal(track, day, ingEditor);
+  addBtn.onclick = () => openModal(track, day, ingEditor, onSuggest, nameInput, descInput);
   editPane.appendChild(addBtn);
 
   editPane.appendChild(el('div', 'edit-errors'));
@@ -289,14 +304,18 @@ function buildDishCard(track, day, dish) {
   return card;
 }
 
-function switchToEdit(card, view, editPane) {
+function switchToEdit(view, editPane) {
   view.classList.add('hidden');
   editPane.classList.remove('hidden');
 }
 
-function buildIngRow(productId, name, quantityG) {
+function buildIngRow(productId, name, quantityG, onSuggest) {
   const row = el('div', 'ing-row');
   row.dataset.productId = productId;
+
+  const suggestBtn = el('button', 'row-suggest-btn', 'AI hint');
+  suggestBtn.title = 'Get AI substitution suggestions for this ingredient';
+  suggestBtn.onclick = () => onSuggest && onSuggest(productId, name);
 
   const nameSpan = el('span', 'ing-name', name);
 
@@ -311,12 +330,108 @@ function buildIngRow(productId, name, quantityG) {
   const removeBtn = el('button', 'remove-btn', '×');
   removeBtn.onclick = () => row.remove();
 
+  row.appendChild(suggestBtn);
   row.appendChild(nameSpan);
   row.appendChild(qtyInput);
   row.appendChild(gLabel);
   row.appendChild(removeBtn);
 
   return row;
+}
+
+// AI suggestions
+
+async function loadSuggestions(track, ingEditor, panel, nameInput, descInput, targetProductId, targetName) {
+  panel.innerHTML = '';
+  panel.classList.remove('hidden');
+  panel.appendChild(el('div', 'suggestions-loading', `Finding substitutes for "${targetName}"…`));
+
+  const ingRows = ingEditor.querySelectorAll('.ing-row');
+  const ingredients = Array.from(ingRows).map(row => ({
+    product_id: parseInt(row.dataset.productId, 10),
+    quantity_g: parseFloat(row.querySelector('.ing-qty').value) || 1,
+  }));
+
+  const res = await fetch('/api/suggest', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ track, target_product_id: targetProductId, ingredients }),
+  });
+
+  panel.innerHTML = '';
+
+  if (!res.ok) {
+    panel.appendChild(el('div', 'suggestions-error', 'Could not load suggestions. Try again.'));
+    return;
+  }
+
+  const data = await res.json();
+
+  const header = el('div', 'suggestions-header');
+  header.appendChild(el('span', '', `Substitutes for "${targetName}"`));
+  const closeBtn = el('button', 'suggestions-close', '×');
+  closeBtn.onclick = () => panel.classList.add('hidden');
+  header.appendChild(closeBtn);
+  panel.appendChild(header);
+
+  if (!data.candidates || !data.candidates.length) {
+    panel.appendChild(el('div', 'suggestions-empty', 'No substitutes found in the catalogue.'));
+    return;
+  }
+
+  data.candidates.forEach(c => {
+    const cand = el('div', 'suggestion-candidate');
+
+    const info = el('div', 'suggestion-cand-info');
+    info.appendChild(el('div', 'suggestion-cand-name', c.product_name));
+    info.appendChild(el('span', 'suggestion-cand-group', c.ingredient_group));
+    info.appendChild(el('div', 'suggestion-cand-reason', c.reason));
+
+    const swapBtn = el('button', 'swap-btn', 'Swap');
+    swapBtn.onclick = async () => {
+      // Replace the target ingredient row
+      const rows = ingEditor.querySelectorAll('.ing-row');
+      for (const row of rows) {
+        if (parseInt(row.dataset.productId, 10) === targetProductId) {
+          const qty = parseFloat(row.querySelector('.ing-qty').value) || 100;
+          const onSuggest = (pid, name) =>
+            loadSuggestions(track, ingEditor, panel, nameInput, descInput, pid, name);
+          row.replaceWith(buildIngRow(c.product_id, c.product_name, qty, onSuggest));
+          break;
+        }
+      }
+      panel.classList.add('hidden');
+
+      // Re-generate dish name and description to match the updated ingredients
+      const updatedRows = ingEditor.querySelectorAll('.ing-row');
+      const updatedIngredients = Array.from(updatedRows).map(row => ({
+        product_id: parseInt(row.dataset.productId, 10),
+        quantity_g: parseFloat(row.querySelector('.ing-qty').value) || 1,
+      }));
+
+      nameInput.classList.add('renaming');
+      nameInput.disabled = true;
+
+      const renameRes = await fetch('/api/rename-dish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ track, ingredients: updatedIngredients }),
+      });
+
+      nameInput.disabled = false;
+      nameInput.classList.remove('renaming');
+
+      if (renameRes.ok) {
+        const renamed = await renameRes.json();
+        nameInput.value = renamed.dish_name;
+        if (descInput) descInput.value = renamed.description;
+      }
+    };
+
+    cand.appendChild(info);
+    cand.appendChild(swapBtn);
+    panel.appendChild(cand);
+  });
 }
 
 // Recipe / details modal
@@ -383,8 +498,8 @@ function filterModal() {
   });
 }
 
-function openModal(track, day, ingEditor) {
-  modalContext = { track, day };
+function openModal(track, day, ingEditor, onSuggest, nameInput, descInput) {
+  modalContext = { track, day, onSuggest: onSuggest || null, nameInput: nameInput || null, descInput: descInput || null };
   activeIngEditor = ingEditor;
   document.getElementById('modal-search').value = '';
   filterModal();
@@ -408,7 +523,7 @@ function confirmAdd() {
   const name = selected.dataset.name;
   const qty = parseFloat(document.getElementById('modal-qty').value) || 100;
 
-  activeIngEditor.appendChild(buildIngRow(productId, name, qty));
+  activeIngEditor.appendChild(buildIngRow(productId, name, qty, modalContext.onSuggest));
   closeModal();
 }
 

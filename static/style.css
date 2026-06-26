@@ -339,6 +339,126 @@ main {
 }
 .cancel-btn:hover { background: #f0f0f0; }
 
+/* ── AI hint button (per ingredient row, left of name) ───────── */
+.row-suggest-btn {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  background: #f3ebfc;
+  border: 1px solid #cfa8e8;
+  border-radius: 3px;
+  color: #7b3fa0;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.2px;
+}
+.row-suggest-btn:hover { background: #e8d5f7; border-color: #9b59b6; }
+
+/* Name input shimmer while AI is renaming */
+.dish-name-input.renaming {
+  opacity: 0.5;
+  background: #f5f0ff;
+}
+
+/* ── Suggestions panel ────────────────────────────────────────── */
+.suggestions-panel {
+  border: 1px solid #e0d0f0;
+  border-radius: 6px;
+  background: #faf8fd;
+  padding: 0.55rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.suggestions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #7b3fa0;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.suggestions-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #bbb;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0;
+}
+.suggestions-close:hover { color: #555; }
+
+.suggestions-loading,
+.suggestions-empty {
+  font-size: 0.75rem;
+  color: #999;
+  font-style: italic;
+}
+
+.suggestions-error {
+  font-size: 0.75rem;
+  color: #c0392b;
+}
+
+.suggestion-candidate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #ede8f5;
+}
+.suggestion-candidate:last-child { border-bottom: none; }
+
+.suggestion-cand-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.suggestion-cand-name {
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-cand-group {
+  font-size: 0.65rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.suggestion-cand-reason {
+  font-size: 0.72rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.swap-btn {
+  background: #9b59b6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.swap-btn:hover { background: #7d3c98; }
+
 /* ── Utility ──────────────────────────────────────────────────── */
 .hidden { display: none !important; }
 

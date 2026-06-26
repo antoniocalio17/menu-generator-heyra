@@ -8,14 +8,50 @@ Generates a weekly canteen lunch menu for two tracks (meat / vegetarian),
 Monday to Friday, grounded in a real product catalogue (products.csv).
 
 Pipeline:
-  Catalogue → Planner (LLM) → fix_budget → Validator → Exporter → API → UI
+  Catalogue → Composer → LLM (naming only) → fix_budget → Validator → Exporter → API → UI
 
-Each step is a separate module under engine/. The pipeline is wired together
-in api/main.py (FastAPI) and exposed through a browser UI in static/.
+The LLM does NOT select ingredients. The composer algorithm builds dishes
+from the catalogue using cuisine-weighted sampling. The LLM only names each
+dish, writes a recipe overview, and flags genuinely incoherent combinations.
 
 Run with:
   uvicorn api.main:app --reload    (from the menu-generator/ directory)
   Then open http://localhost:8000
+
+
+================================================================================
+MODULE: engine/constants.py
+================================================================================
+
+PURPOSE
+  Single source of truth for all shared constants. Import from here — never
+  redefine in individual modules.
+
+CONSTANTS
+  DAYS               — ["monday", ..., "friday"]
+  VEGETARIAN_CLASSES — frozenset {"vegan", "vegetarian"}
+  PROTEIN_ROLE       — {"meat": "protein_meat", "vegetarian": "protein_veg"}
+  DISH_ROLES         — ["carb", "vegetable", "sauce"]
+  ROLE_GROUPS        — maps 5 roles to their ingredient groups (see below)
+  MEAT_GROUPS        — frozenset of protein_meat ingredient groups
+  WEEKLY_BUDGET_EUR  — 20.10
+  CUISINE_ROTATION   — ["mediterranean", "asian", "nordic",
+                         "middle_eastern", "mediterranean"]
+                       Five cuisine targets for Mon–Fri (Med appears twice —
+                       richest product pool).
+
+ROLE_GROUPS
+  protein_meat  — meat, poultry, fish, seafood, charcuterie
+  protein_veg   — legumes, eggs, plant proteins, cheeses, nuts
+  carb          — grains, rices, pastas, breads
+  vegetable     — vegetables, mushrooms
+  sauce         — sauces, condiments, oils, herbs, spices,
+                  creams and butters, yogurts
+
+  NOTE: fruits, sweeteners, seeds, flours, milks, plant-based beverages are
+  intentionally excluded from every role. They exist in the catalogue and
+  chefs can add them manually via Edit. Auto-composition avoids them because
+  they produce incoherent sauce slots (e.g. blueberries as a sauce).
 
 
 ================================================================================
@@ -24,86 +60,84 @@ MODULE: engine/catalogue.py
 
 PURPOSE
   Loads products.csv and provides typed, filtered samples of products
-  to be passed to the LLM as candidate ingredient pools.
+  by recipe role and dietary track.
 
 DATA TYPES
   Product (TypedDict)
-    One row from products.csv — product_id, product_name, ingredient_group,
-    cost_per_100g_eur, energy_kcal_per_100g, dietary_class,
-    allergen_gluten, allergen_nuts, allergen_dairy.
+    One row from products.csv:
+      product_id, product_name, ingredient_group, cuisine_tag,
+      cost_per_100g_eur, energy_kcal_per_100g, dietary_class,
+      allergen_gluten, allergen_nuts, allergen_dairy.
+    cuisine_tag added by eda.py — one of:
+      mediterranean, asian, nordic, middle_eastern, universal.
 
-  IngredientInput (TypedDict)
-    A (product_id, quantity_g) pair used when computing stats for a dish.
-
-  MealStats (frozen dataclass)
-    Result of compute_meal_stats: cost_eur and calories_kcal for a dish.
-
-  TrackPool = dict[role, list[Product]]
-    One track's candidate pools keyed by role name.
-
-  WeeklyPools = dict[track, TrackPool]
-    Both tracks together: {"meat": TrackPool, "vegetarian": TrackPool}.
-
-ROLE GROUPS
-  All 29 ingredient groups from the CSV are mapped to 5 roles:
-    protein_meat  — meat, poultry, fish, seafood, charcuterie
-    protein_veg   — legumes, eggs, plant proteins, cheeses, nuts
-    carb          — grains, rices, pastas, breads
-    vegetable     — vegetables, mushrooms
-    sauce         — sauces, oils, herbs, spices, condiments, creams,
-                    milks, yogurts, sweeteners, flours, seeds, fruits,
-                    plant-based beverages
-
-  Fruits, sweeteners, seeds etc. are kept in the sauce pool so the LLM
-  can use them when culinarily appropriate (chutneys, nut roasts, etc.)
-  rather than being arbitrarily excluded.
+  IngredientInput (TypedDict)   — (product_id, quantity_g) pair
+  MealStats (frozen dataclass)  — cost_eur, calories_kcal
 
 CLASS: Catalogue
   __init__(csv_path)
-    Reads the CSV, keeps only is_available=1 rows.
-    Builds two DataFrames:
-      _df     — full filtered table, used for sampling/filtering
-      _by_id  — same table indexed by product_id for O(1) lookup
+    Reads CSV, keeps only is_available=1 rows.
+    _df     — full filtered DataFrame for sampling
+    _by_id  — indexed by product_id for O(1) lookup
 
   get_candidates_by_role(role, track, n=15, exclude_ids=None)
-    Returns up to n randomly sampled Products for a given role and track.
-    - Vegetarian track: filters to dietary_class in {vegan, vegetarian}
-    - Meat track + protein_meat role: filters to dietary_class == "meat"
-    - Raises ValueError on unknown role or track name.
+    Returns up to n randomly sampled Products for a role+track.
+    Vegetarian: filters dietary_class ∈ {vegan, vegetarian}
+    Meat + protein_meat: filters dietary_class == "meat"
 
   build_weekly_pools(n_per_role=15, exclude_ids=None)
-    Calls get_candidates_by_role for all roles of each track and returns
-    a WeeklyPools dict. Called once per generation run.
+    Legacy helper (kept for tests). Builds a pool dict across all roles.
+    Not used in the main pipeline — composer calls get_candidates_by_role
+    directly per dish slot.
 
-  get_product_by_id(product_id)
-    O(1) lookup by product_id. Returns Product or None if not found /
-    not available.
-
-  get_cheaper_in_group(ingredient_group, max_cost, track)
-    Returns all products in the same group costing less than max_cost,
-    sorted cheapest first. Used by fix_budget in validator.py.
-
-  compute_meal_stats(ingredients: list[IngredientInput])
-    Sums cost and calories for a list of (product_id, quantity_g) pairs.
-    Returns a MealStats(cost_eur, calories_kcal).
-    Raises ValueError if any product_id is unknown.
+  get_product_by_id(product_id)   — O(1) lookup, returns Product or None
+  get_cheaper_in_group(group, max_cost, track)  — used by fix_budget
+  compute_meal_stats(ingredients)               — returns MealStats
+  get_all_products()                            — returns full catalogue list
 
 
 ================================================================================
-MODULE: engine/output_format.py
+MODULE: engine/composer.py
 ================================================================================
 
 PURPOSE
-  Defines the JSON schema the LLM must return, validated by Pydantic v2.
+  Builds 10 dish skeletons (5 meat + 5 vegetarian) by weighted sampling
+  from the catalogue. No LLM involved — purely algorithmic.
 
-MODELS
-  Ingredient  — product_id (int), quantity_g (float, must be > 0)
-  Dish        — dish_name (non-empty str), ingredients (non-empty list)
-  TrackPlan   — one Dish per day: monday … friday
-  WeeklyPlan  — week_start (date), meat (TrackPlan), vegetarian (TrackPlan)
+HOW IT WORKS
+  For each dish slot, one product is selected per role:
+    protein (meat or veg) + carb + vegetable + sauce
 
-  Track-first structure (not day-first) so the two tracks are independent
-  and the LLM can reason about each track as a coherent unit.
+  Each slot has a target cuisine (from CUISINE_ROTATION). Products are
+  sampled with weights:
+    same cuisine as target  →  weight 3
+    universal               →  weight 2
+    other cuisine           →  weight 1
+
+  This boosts cuisine coherence while allowing cross-cuisine dishes.
+
+DEFAULT QUANTITIES
+  protein_meat / protein_veg  150g
+  carb                        120g
+  vegetable                   100g
+  sauce                        30g
+
+UNIQUENESS GUARANTEE
+  Each dish's ingredient set (frozenset of product_ids) is tracked.
+  _compose_dish() retries up to 20 times per slot to avoid duplicates.
+
+KEY TYPES
+  ComposedDish (dataclass)
+    cuisine: str
+    products: list[tuple[Product, float]]   (product, quantity_g)
+    .ingredient_set() → frozenset[int]
+    .to_dish(name, description) → Dish
+
+KEY FUNCTIONS
+  compose_week(track, catalogue) → list[ComposedDish]   (5 dishes, Mon–Fri)
+  compose_single_dish(track, cuisine, catalogue, seen_sets)
+    Public wrapper for re-composing one slot (used in groq_llama.py when
+    the LLM flags a dish as incoherent).
 
 
 ================================================================================
@@ -112,49 +146,70 @@ MODULE: engine/groq_llama.py
 
 PURPOSE
   Calls the Groq LLM (llama-3.3-70b-versatile via OpenAI-compatible API)
-  with the candidate pools and returns a validated WeeklyPlan.
+  to name and describe pre-composed dishes, and to flag incoherent ones.
+
+WHAT THE LLM DOES
+  Receives: 10 composed dishes (4 ingredients each, with product IDs)
+  Returns per dish:
+    dish_name    — creative name (3–6 words)
+    description  — 1–2 sentence recipe overview (technique + assembly,
+                   no experience sentences, no generic fluff)
+    ingredients  — list of product_ids (from the ones provided; may drop one)
+    valid        — false ONLY if combination is genuinely inedible/absurd
+                   (e.g. candy or ice cream in a savoury main)
+    reason       — brief explanation when valid=false
+
+WHAT THE LLM DOES NOT DO
+  - Select ingredients (composer handles this)
+  - Access the full catalogue
+  - Invent new product IDs
 
 CONFIGURATION
   Model:        llama-3.3-70b-versatile
-  Temperature:  0.2  (low — JSON reliability over creativity;
-                variety comes from random pool sampling, not temperature)
-  Response:     JSON mode (ResponseFormatJSONObject)
-  Retries:      3 attempts max (_MAX_RETRIES)
+  Temperature:  0.4
+  Response:     json_object mode (json_schema not supported by this model)
+  Retries:      3 attempts max
   Backoff:      [2s, 5s, 10s] on Groq 429 rate-limit errors
-  API key:      loaded from engine/.env (GROQ_API_KEY)
 
 RETRY LOGIC
-  The retry loop handles two classes of LLM failure:
+  1. JSON parse / Pydantic validation failure  → error fed back, retry
+  2. Hallucinated product ID                   → _validate_ids() catches it,
+                                                  error fed back, retry
+  3. valid=false dishes                        → re-compose those slots via
+                                                  compose_single_dish(), retry
+     On last attempt: accept anyway + log warning (chef can fix via Edit)
+  4. Rate limit (429)                          → backoff, does not count
+                                                  against _MAX_RETRIES
+  5. Any other API error                       → raises PlannerError immediately
 
-  1. Schema errors (Pydantic ValidationError)
-     The LLM returned JSON that doesn't match WeeklyPlan. The error
-     is injected into the next prompt under "PREVIOUS ERRORS" so the
-     model can self-correct.
-
-  2. Invented product IDs (_check_product_ids guardrail)
-     After a successful JSON parse, every product_id in the plan is
-     checked against the catalogue. Any unknown ID is an error — the
-     LLM hallucinated a product that wasn't in the candidate pools.
-     Same feedback loop: errors go into the next prompt as PREVIOUS ERRORS.
-
-  3. Rate limit (RateLimitError / HTTP 429)
-     Groq rejects the request because we've exceeded their quota.
-     The code waits 2s, 5s, then 10s before retrying silently.
-     If all backoff slots are used, raises PlannerError to the caller.
-     NOTE: a 429 does not count against _MAX_RETRIES.
-
-  On exhausted retries: raises PlannerError with the last error and
-  the last raw LLM response for debugging.
+PYDANTIC MODELS
+  NamedDish       — dish_name, description, ingredients, valid, reason
+  NamingResponse  — meat: list[NamedDish] (5), vegetarian: list[NamedDish] (5)
 
 KEY FUNCTIONS
-  _format_products(products)   — formats a product list for the prompt
-  _format_track(pool)          — formats a full TrackPool for the prompt
-  _prompt_messages(pools, week_start, errors)
-                               — builds the system + user messages
-  _check_product_ids(plan, catalogue)
-                               — guardrail: returns errors for invented IDs
-  generate(week_start, catalogue)
-                               — main entry point, runs the full loop
+  generate(week_start, catalogue) → WeeklyPlan
+    Full pipeline: compose → prompt → parse → validate → assemble
+  _format_dish(dish, idx)         — formats one ComposedDish for the prompt
+  _prompt(meat, veg, errors)      — builds system + user messages
+  _validate_ids(naming, ...)      — checks all returned IDs are from composed set
+  _assemble_plan(...)             — calls dish.to_dish() and builds WeeklyPlan
+
+
+================================================================================
+MODULE: engine/output_format.py
+================================================================================
+
+PURPOSE
+  Pydantic models that define the stored weekly menu format.
+
+MODELS
+  Ingredient   — product_id (int), quantity_g (float > 0)
+  Dish         — dish_name (non-empty str), description (str, default ""),
+                 ingredients (non-empty list[Ingredient])
+  TrackPlan    — one Dish per day: monday … friday
+  WeeklyPlan   — week_start (date), meat (TrackPlan), vegetarian (TrackPlan)
+
+  Menus are saved to data/menus/{year}_w{week:02d}.json using WeeklyPlan.
 
 
 ================================================================================
@@ -162,27 +217,23 @@ MODULE: engine/validator.py
 ================================================================================
 
 PURPOSE
-  Two concerns: budget auto-fix and hard constraint validation.
+  Budget auto-fix and hard constraint validation.
 
-CONSTANT
-  WEEKLY_BUDGET_EUR = 20.10  (per track, per week)
-
-fix_budget(plan, catalogue) -> WeeklyPlan
-  Called before validate(). Silently adjusts the plan if over budget.
-  Strategy: find the single most expensive ingredient across all dishes,
-  swap it for the cheapest available product in the same ingredient_group,
-  skip swaps that would duplicate another dish's ingredient set.
-  Repeats until within budget or no cheaper swap is possible.
+fix_budget(plan, catalogue) → WeeklyPlan
+  Called before validate(). Silently adjusts if over budget.
+  Strategy: find the single most expensive ingredient, swap it for the
+  cheapest available product in the same ingredient_group, skip swaps
+  that would duplicate another dish's ingredient set. Repeats until
+  within budget or no cheaper swap is possible.
 
 validate(plan, catalogue)
-  Collects ALL constraint violations (does not fail fast) then raises
-  PlanValidationError(errors: list[str]) if any are found.
+  Collects ALL violations (does not fail fast), raises
+  PlanValidationError(errors: list[str]) if any found.
   Checks:
     - All product_ids exist in catalogue
-    - Meat track: every dish has at least one meat/poultry/fish/seafood/
-      charcuterie ingredient
+    - Meat track: every dish has ≥1 meat/poultry/fish/seafood/charcuterie
     - Vegetarian track: no ingredient with dietary_class == "meat"
-    - Each track's weekly cost ≤ WEEKLY_BUDGET_EUR
+    - Each track weekly cost ≤ WEEKLY_BUDGET_EUR (20.10 EUR)
 
 
 ================================================================================
@@ -191,40 +242,73 @@ MODULE: engine/exporter.py
 
 PURPOSE
   Converts a validated WeeklyPlan into a rich WeekSummary with cost,
-  calories, and allergen data. Renders to Markdown or a JSON-serializable
-  dict for the API.
+  calories, allergens, and description. Renders to JSON (API) or Markdown.
 
 KEY TYPES
   IngredientDetail  — product_id, name, quantity_g, cost_eur,
-                      calories_kcal, allergens
-  DishDetail        — dish_name, ingredients, total_cost_eur,
-                      total_calories_kcal, allergens
-  TrackSummary      — dishes (dict[day, DishDetail]), weekly_cost_eur,
-                      weekly_calories_kcal, allergens
+                      calories_kcal, allergens: list[str]
+  DishDetail        — dish_name, description, ingredients,
+                      total_cost_eur, total_calories_kcal,
+                      allergens: list[str]   (union across all ingredients)
+  TrackSummary      — dishes (dict[day, DishDetail]), weekly totals, allergens
   WeekSummary       — week_start, meat (TrackSummary), vegetarian (TrackSummary)
 
 KEY FUNCTIONS
-  build_summary(plan, catalogue) -> WeekSummary
-  summary_to_dict(summary, week) -> dict   (used by the API)
-  to_markdown(summary) -> str              (used by main.py CLI)
+  build_summary(plan, catalogue) → WeekSummary
+  summary_to_dict(summary, week) → dict   (API response, includes description)
+  to_markdown(summary) → str
 
 
 ================================================================================
-MODULE: engine/history.py
+MODULE: engine/fallback.py
 ================================================================================
 
 PURPOSE
-  Persists the pool of product_ids shown to the LLM each week so future
-  runs can detect overly similar pools and resample.
-  NOTE: not wired into the current pipeline — planned for a future iteration.
+  Builds a valid WeeklyPlan from past saved menus when the LLM is unavailable.
+
+HOW IT WORKS
+  Reads all *.json files in data/menus/ (skips current week's file).
+  For each track, collects all past Dish objects, picks 5 with distinct
+  ingredient sets (uniqueness by frozenset of product_ids, not dish name).
+  Raises FallbackError if not enough distinct dishes (e.g. first week ever).
 
 FUNCTIONS
-  load / save_week / past_pool_ids / pool_iou / is_pool_fresh
-  See module docstring for details.
+  build_fallback_plan(week_start, menus_dir, exclude_path) → WeeklyPlan
+  _load_past_dishes(menus_dir, exclude_path) → dict[track, list[Dish]]
+  _pick_distinct(dishes, n) → list[Dish]
 
-FUTURE USE
-  In build_weekly_pools: after sampling, check IoU against last 4 weeks.
-  If IoU > 0.65 with any past week, resample until fresh.
+
+================================================================================
+MODULE: engine/logging_config.py
+================================================================================
+
+PURPOSE
+  Configures file-only logging (no terminal output) with rotation.
+
+setup_logging(log_dir)
+  Creates data/logs/app.log with RotatingFileHandler
+  (maxBytes=1MB, backupCount=5).
+  Silences noisy third-party loggers:
+    openai, httpx, httpcore, uvicorn.access, uvicorn.error → WARNING only.
+
+Called once at startup in api/main.py.
+Log format: "2026-06-26 14:10:01 [INFO    ] engine.composer: ..."
+
+
+================================================================================
+DATA: eda.py
+================================================================================
+
+PURPOSE
+  One-time script that enriches products.csv with a cuisine_tag column.
+
+Run with:  python eda.py
+
+Maps each of the 29 ingredient groups to one of:
+  mediterranean, asian, nordic, middle_eastern, universal
+
+Writes cuisine_tag in-place to data/products.csv.
+Do not re-run unless the ingredient group taxonomy changes.
 
 
 ================================================================================
@@ -234,102 +318,121 @@ API: api/main.py  (FastAPI)
 Routes all include {year} so menus across calendar years work correctly.
 
   POST /api/generate/{year}/{week}
-    Runs the full pipeline (generate → fix_budget → validate → export).
+    Full pipeline: compose → LLM → fix_budget → validate → export → save.
+    If LLM fails: fallback from past weeks.
+    If fallback fails: 503.
     Saves result to data/menus/{year}_w{week:02d}.json.
-    Returns the WeekSummary dict.
+    Returns WeekSummary dict. Includes fallback=true if fallback was used.
 
   GET  /api/menu/{year}/{week}
-    Returns the stored WeekSummary for a year+week.
-    404 if not yet generated.
+    Returns stored WeekSummary. 404 if not yet generated.
 
   PUT  /api/menu/{year}/{week}/{track}/{day}
-    Chef edits a single dish. Validates before saving.
+    Chef edits one dish. Validates before saving. Returns updated WeekSummary.
     Body: { dish_name: str, ingredients: [{product_id, quantity_g}] }
-    Returns the updated WeekSummary.
 
   GET  /api/catalogue
     Returns all available products (used by the UI ingredient search).
 
   GET  /
-    Serves index.html (frontend).
+    Serves index.html.
 
   /static/*
     Serves static/ directory (CSS, JS).
+    TODO: rename static/ → webapp/
+
+
+================================================================================
+EDGE CASES HANDLED
+================================================================================
+
+  LLM API error / timeout              → PlannerError → fallback
+  No past menus for fallback (week 1)  → FallbackError → 503
+  LLM returns wrong JSON structure     → Pydantic error → retry (3x)
+  LLM hallucinates product IDs         → _validate_ids() → error fed back → retry
+  LLM flags dish as incoherent         → re-compose that slot → retry
+  Still flagged after 3 attempts       → accept + log warning (chef edits)
+  Groq rate limit 429                  → backoff 2s/5s/10s (separate counter)
+  Week cost exceeds €20.10             → fix_budget() swaps priciest ingredient
+  Budget swap would duplicate a dish   → skip, try next cheapest alternative
+  Composer generates duplicate dish    → seen_sets check, retry up to 20x
+  Empty candidate pool for a role      → ComposerError immediately
+  Fruits/sweeteners in sauce slot      → excluded from ROLE_GROUPS (data intact)
+  Meat in vegetarian track             → validator catches it (generate + Edit)
+  Meat track has no meat protein       → validator catches it
+  Unknown product_id in saved plan     → validator reports it
+  Invalid year/week in URL             → 400 from _week_start()
+  Menu not yet generated               → 404, UI shows empty state
+  Year boundary in week navigation     → JS changeWeek() rolls year correctly
+  Chef saves invalid dish via Edit     → PUT validates before writing → 422
 
 
 ================================================================================
 FRONTEND: static/
 ================================================================================
 
-Three files — no framework, no build step, plain browser code.
+Three files — no framework, no build step, plain browser JS.
 
-  index.html   — HTML structure + two modals
-  style.css    — all visual styling
-  app.js       — all behaviour
+  index.html  — HTML structure + three modals
+  style.css   — all visual styling
+  app.js      — all behaviour
 
-See "FRONTEND" section below for a full breakdown.
-
-
-================================================================================
-FRONTEND: static/app.js
-================================================================================
-
-STATE
-  currentYear  — ISO year currently displayed (int)
-  currentWeek  — ISO week number currently displayed (int, 1–52/53)
-  menuData     — last fetched WeekSummary from the API (or null)
-  catalogue    — list of all products, loaded once on page init
+STATE (app.js)
+  currentYear, currentWeek  — ISO year/week currently displayed
+  menuData                  — last fetched WeekSummary (or null)
+  catalogue                 — all products, loaded once on init
 
 WEEK/YEAR NAVIGATION
-  getISOWeek(date)          — standard ISO week number from a JS Date
-  getWeeksInYear(year)      — 52 or 53 depending on the year
-  isoWeekMonday(year, week) — returns the Monday Date for a given week
-  formatDateRange(year, week) — "Jun 23 – Jun 27" label for the header
-  changeWeek(delta)         — increments/decrements currentWeek;
-                              rolls currentYear over when crossing week 1
-                              or the last week of the year
+  getISOWeek / getWeeksInYear / isoWeekMonday / formatDateRange
+  changeWeek(delta) — rolls year on boundary crossing
 
 API CALLS
-  loadCatalogue()           — GET /api/catalogue, stores in catalogue[]
-  loadWeek(week, year)      — GET /api/menu/{year}/{week}
-  generateWeek()            — POST /api/generate/{year}/{currentWeek}
-  saveDish(track, day)      — PUT /api/menu/{year}/{week}/{track}/{day}
+  loadCatalogue()   — GET /api/catalogue
+  loadWeek()        — GET /api/menu/{year}/{week}
+  generateWeek()    — POST /api/generate/{year}/{week}
+  saveDish()        — PUT /api/menu/{year}/{week}/{track}/{day}
 
 RENDERING
-  renderCalendar(data)      — builds the 6-column CSS grid:
-                              [track label] [Mon] [Tue] [Wed] [Thu] [Fri]
-                              Day headers show the actual date (e.g. "Mon, Jun 23")
-  renderTrackRow(...)       — renders one row (meat or vegetarian)
-  buildDishCard(track,day,dish)
-    Each card has two modes toggled by class:
-      .dish-view   — read mode: name, cost/kcal, allergen pills,
-                     "Details" button, "Edit" button
-      .dish-edit   — edit mode: name input, ingredient rows with qty inputs,
-                     "+ Add ingredient" (opens modal), Save / Cancel
+  renderCalendar(data) — 6-column CSS grid: [label][Mon][Tue][Wed][Thu][Fri]
+    Day headers show real dates (e.g. "Mon, Jun 23")
+  buildDishCard(track, day, dish)
+    View mode:  dish name · cost/kcal · allergen pills · Recipe · Edit buttons
+    Edit mode:  name input · ingredient rows (qty editable) ·
+                + Add ingredient · Save / Cancel
 
 MODALS
-  Details modal (#details-overlay)
-    Opened by "Details" button on any dish card.
-    Shows a table: ingredient | grams | allergens
-    Footer: total cost EUR · total calories kcal
+  Recipe modal (#details-overlay)
+    "Recipe overview" label + description paragraph
+    Table: Ingredient | Grams | Allergens
+    Footer: allergen pills + total cost + calories
 
   Add-ingredient modal (#modal-overlay)
-    Opened by "+ Add ingredient" in edit mode.
-    Search box filters the full catalogue list.
-    Select a product + quantity, click "Add to dish" → appends an
-    ingredient row to the active editor without saving to the server.
-    Save only happens when the chef clicks "Save" on the dish card.
+    Search + select from full catalogue + quantity input → appends row
+    Does not save — chef must click Save on the dish card.
+
+  Global warning banner (#global-warning)
+    Shown when fallback plan was used instead of LLM.
 
 
 ================================================================================
 NEXT STEPS
 ================================================================================
 
-1. history.py integration
-   After a successful generate cycle, call save_week() with pool IDs.
-   Before build_weekly_pools, check IoU against the last 4 weeks and
-   resample if too similar (IoU > 0.65).
+1. AI Suggestions (Edit mode)
+   "Get AI suggestion" button in the Edit pane.
+   Sends current dish + alternatives per role to the LLM.
+   LLM returns one specific ingredient swap + reason.
+   UI shows suggestion card with Apply button (wires swap into form, no auto-save).
+   New: engine/groq_llama.py → suggest_swap(), api/main.py → POST /api/suggest/...
 
-2. Auth / multi-user
-   Currently there is no authentication. Any user can generate or edit
-   any week. Add session/token auth if deploying beyond a single chef.
+2. Rename static/ → webapp/
+   Update app.mount("/static", ...) in api/main.py.
+   Update <link> and <script> src paths in index.html.
+
+3. test_planner.py rewrite
+   The old tests cover _format_products, _prompt_messages, _check_product_ids
+   which no longer exist. Needs full rewrite to cover _format_dish, _prompt,
+   _validate_ids, _assemble_plan, and generate() with mocked LLM.
+
+4. Auth / multi-user
+   No authentication currently. Add session/token auth before multi-chef deploy.
