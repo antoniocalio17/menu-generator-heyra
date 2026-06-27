@@ -20,10 +20,10 @@ from engine.fallback import FallbackError, build_fallback_plan
 from engine.groq_llama import PlannerError, generate
 from engine.output_format import WeeklyPlan
 from engine.suggester import rename_dish, suggest_substitutes
-from engine.validator import PlanValidationError, fix_budget, validate
+from engine.validator import PlanValidationError, validate
 
 MENUS_DIR = Path(__file__).parent.parent / "data" / "menus"
-STATIC_DIR = Path(__file__).parent.parent / "static"
+STATIC_DIR = Path(__file__).parent.parent / "web_app"
 LOG_DIR = Path(__file__).parent.parent / "data" / "logs"
 
 setup_logging(LOG_DIR)
@@ -45,11 +45,7 @@ def _menu_path(year: int, week: int) -> Path:
     return MENUS_DIR / f"{year}_w{week:02d}.json"
 
 
-# ---------------------------------------------------------------------------
-# Generation & retrieval
-# ---------------------------------------------------------------------------
-
-
+# Generation and Retrieval
 @app.post("/api/generate/{year}/{week}")
 def generate_week(year: int, week: int) -> dict:
     """Run the full pipeline for the given ISO year + week and store the result."""
@@ -74,8 +70,6 @@ def generate_week(year: int, week: int) -> dict:
         except FallbackError as fb_err:
             logger.error("Fallback failed: %s", fb_err)
             raise HTTPException(503, str(fb_err)) from fb_err
-
-    plan = fix_budget(plan, catalogue)
 
     try:
         validate(plan, catalogue)

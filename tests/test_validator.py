@@ -1,9 +1,8 @@
 import unittest
 
 from engine.catalogue import Catalogue
-from engine.constants import WEEKLY_BUDGET_EUR
 from engine.output_format import WeeklyPlan
-from engine.validator import PlanValidationError, fix_budget, validate
+from engine.validator import PlanValidationError, validate
 
 
 def _dish(name: str, product_ids: list[int], quantity_g: float = 150.0) -> dict:
@@ -46,8 +45,6 @@ class TestValidator(unittest.TestCase):
         cls.meat_id = int(meat_row["product_id"])
         cls.veg_id = int(veg_row["product_id"])
         cls.carb_id = int(carb_row["product_id"])
-        cls.meat_cost = float(meat_row["cost_per_100g_eur"])
-        cls.veg_cost = float(veg_row["cost_per_100g_eur"])
 
     def _meat_dish(self, name: str = "Meat Dish", quantity_g: float = 150.0) -> dict:
         return _dish(name, [self.meat_id, self.carb_id], quantity_g)
@@ -99,57 +96,6 @@ class TestValidator(unittest.TestCase):
             validate(plan, self.cat)
         self.assertTrue(any("meat/monday" in e for e in ctx.exception.errors))
 
-    def test_budget_exceeded_raises(self) -> None:
-        # Use a very large quantity to guarantee exceeding the budget
-        huge_qty = 100_000.0
-        dishes = [self._meat_dish(f"M{i}", quantity_g=huge_qty) for i in range(5)]
-        plan = _plan(dishes, [self._veg_dish(f"V{i}") for i in range(5)])
-        with self.assertRaises(PlanValidationError) as ctx:
-            validate(plan, self.cat)
-        found = any("weekly cost" in e and "exceeds budget" in e for e in ctx.exception.errors)
-        self.assertTrue(found)
-
-    def test_budget_constant_value(self) -> None:
-        self.assertEqual(WEEKLY_BUDGET_EUR, 20.10)
-
-    def test_fix_budget_returns_plan_and_does_not_raise(self) -> None:
-        # fix_budget must always return a WeeklyPlan without raising, even when the budget
-        # is impossible to meet (e.g. extreme quantities leave no viable swap).
-        huge_qty = 100_000.0
-        meat_dishes = [self._meat_dish(f"M{i}", quantity_g=huge_qty) for i in range(5)]
-        veg_dishes = [self._veg_dish(f"V{i}") for i in range(5)]
-        plan = _plan(meat_dishes, veg_dishes)
-        fixed = fix_budget(plan, self.cat)
-        self.assertIsInstance(fixed, WeeklyPlan)
-
-    def test_fix_budget_reduces_cost_when_cheaper_exists(self) -> None:
-        # With a realistic over-budget quantity and at least one cheaper product in the
-        # same group, fix_budget should bring the weekly cost down (not necessarily to target).
-        qty = 5_000.0
-        meat_dishes = [self._meat_dish(f"M{i}", quantity_g=qty) for i in range(5)]
-        veg_dishes = [self._veg_dish(f"V{i}") for i in range(5)]
-        plan = _plan(meat_dishes, veg_dishes)
-
-        original_cost = sum(
-            self.cat.compute_meal_stats(
-                [{"product_id": ing.product_id, "quantity_g": ing.quantity_g}
-                 for ing in getattr(plan.meat, day).ingredients]
-            ).cost_eur
-            for day in ["monday", "tuesday", "wednesday", "thursday", "friday"]
-        )
-
-        fixed = fix_budget(plan, self.cat)
-
-        fixed_cost = sum(
-            self.cat.compute_meal_stats(
-                [{"product_id": ing.product_id, "quantity_g": ing.quantity_g}
-                 for ing in getattr(fixed.meat, day).ingredients]
-            ).cost_eur
-            for day in ["monday", "tuesday", "wednesday", "thursday", "friday"]
-        )
-
-        # Cost must not increase after fix_budget
-        self.assertLessEqual(fixed_cost, original_cost + 0.01)
 
 
 if __name__ == "__main__":

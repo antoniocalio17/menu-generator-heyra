@@ -16,6 +16,7 @@ from openai.types.shared_params import ResponseFormatJSONObject
 from pydantic import BaseModel, Field, ValidationError
 
 from engine.catalogue import Catalogue, Product
+from engine.constants import RENAME_SCHEMA, RENAME_SYSTEM_PROMPT, SUGGEST_SCHEMA
 
 load_dotenv(Path(__file__).parent / ".env")
 
@@ -26,7 +27,6 @@ _MAX_CANDIDATES = 3
 _POOL_SIZE = 20
 
 logger = logging.getLogger(__name__)
-
 
 # ---------------------------------------------------------------------------
 # Rename / re-describe a dish after an ingredient swap
@@ -63,25 +63,10 @@ def rename_dish(
             f"({qty:.0f}g, cuisine={p['cuisine_tag']})"
         )
 
-    schema = (
-        '\n\nGive this dish:\n'
-        '1. A creative name (3-6 words)\n'
-        '2. A 1-2 sentence description — mention the key cooking technique and how '
-        'the components come together. Be concise. No generic closing sentences.\n\n'
-        'Return JSON only:\n'
-        '{ "dish_name": "...", "description": "..." }'
-    )
-
-    system = (
-        "You are a professional canteen chef. "
-        "Name and briefly describe a dish based on its ingredients. "
-        "Respond with JSON only."
-    )
-
     client = OpenAI(api_key=os.environ["GROQ_API_KEY"], base_url=_GROQ_BASE_URL)
     messages: list[ChatCompletionMessageParam] = [
-        cast(ChatCompletionMessageParam, {"role": "system", "content": system}),
-        cast(ChatCompletionMessageParam, {"role": "user", "content": "\n".join(lines) + schema}),
+        cast(ChatCompletionMessageParam, {"role": "system", "content": RENAME_SYSTEM_PROMPT}),
+        cast(ChatCompletionMessageParam, {"role": "user", "content": "\n".join(lines) + RENAME_SCHEMA}),
     ]
 
     try:
@@ -162,17 +147,7 @@ def _build_prompt(
             f"cuisine={p['cuisine_tag']}  {p['cost_per_100g_eur']:.2f} EUR/100g"
         )
 
-    schema = (
-        '\nReturn JSON:\n'
-        '{\n'
-        '  "candidates": [\n'
-        '    { "product_id": <int from pool>, "reason": "..." },\n'
-        '    ...\n'
-        '  ]\n'
-        '}'
-    )
-
-    user = "\n".join(dish_lines) + "\n".join(pool_lines) + schema
+    user = "\n".join(dish_lines) + "\n".join(pool_lines) + SUGGEST_SCHEMA
 
     return [
         cast(ChatCompletionMessageParam, {"role": "system", "content": system}),

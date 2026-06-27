@@ -9,7 +9,7 @@ from datetime import date
 from engine.catalogue import Catalogue
 from engine.exporter import build_summary, to_markdown
 from engine.groq_llama import PlannerError, generate
-from engine.validator import PlanValidationError, fix_budget, validate
+from engine.validator import PlanValidationError, validate
 
 
 def main(week_number: int) -> None:
@@ -27,8 +27,6 @@ def main(week_number: int) -> None:
     except PlannerError as e:
         print(f"Planner failed: {e}")
         sys.exit(1)
-
-    plan = fix_budget(plan, catalogue)
 
     try:
         validate(plan, catalogue)

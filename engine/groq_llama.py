@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from engine.catalogue import Catalogue
 from engine.composer import ComposedDish, ComposerError, compose_single_dish, compose_week
-from engine.constants import CUISINE_ROTATION, DAYS
+from engine.constants import CUISINE_ROTATION, DAYS, NAMING_OUTPUT_FORMAT, NAMING_SYSTEM_PROMPT
 from engine.output_format import WeeklyPlan
 
 load_dotenv(Path(__file__).parent / ".env")
@@ -30,7 +30,6 @@ _MAX_RETRIES = 3
 _RATE_LIMIT_BACKOFF: list[float] = [2.0, 5.0, 10.0]
 
 logger = logging.getLogger(__name__)
-
 
 class PlannerError(Exception):
     pass
@@ -63,24 +62,6 @@ def _prompt(
     veg_dishes: list[ComposedDish],
     errors: list[str],
 ) -> list[ChatCompletionMessageParam]:
-    system = (
-        "You are a creative professional chef reviewing pre-composed canteen dishes.\n"
-        "For each dish you receive a list of ingredients already selected. Your job:\n"
-        "1. Give the dish an appetizing, creative name (3-6 words)\n"
-        "2. Write a 1-2 sentence recipe overview — mention the key cooking technique "
-        "(e.g. pan-seared, slow-cooked, roasted, marinated) and how the components come together. "
-        "Be concise and practical. Do NOT describe the eating experience, do NOT add generic "
-        "closing sentences like 'creating a delicious meal' or 'satisfying and flavorful'.\n"
-        "3. Return the ingredient IDs exactly as given — you may drop one if it truly does not"
-        " belong\n"
-        "4. Mark valid=false ONLY if the combination is genuinely inedible or absurd as a savoury "
-        "main dish (e.g. candy, ice cream, or confectionery mixed with proteins and carbs). "
-        "Provide a brief reason when marking invalid.\n"
-        "   Cross-cuisine pairings, unusual flavour profiles, and imperfect matches are all "
-        "ACCEPTABLE — mark them valid=true.\n"
-        "Respond with a JSON object only."
-    )
-
     meat_section = "MEAT TRACK\n" + "\n\n".join(
         _format_dish(d, i + 1) for i, d in enumerate(meat_dishes)
     )
@@ -88,32 +69,15 @@ def _prompt(
         _format_dish(d, i + 1) for i, d in enumerate(veg_dishes)
     )
 
-    output_format = (
-        'Return a JSON object with exactly this structure:\n'
-        '{\n'
-        '  "meat": [\n'
-        '    {"dish_name": "...", "description": "...", "ingredients": [id1, id2, id3, id4],'
-        ' "valid": true},\n'
-        '    ... (5 objects total, one per day Mon-Fri)\n'
-        '  ],\n'
-        '  "vegetarian": [\n'
-        '    {"dish_name": "...", "description": "...", "ingredients": [id1, id2, id3, id4],'
-        ' "valid": true},\n'
-        '    ... (5 objects total, one per day Mon-Fri)\n'
-        '  ]\n'
-        '}\n'
-        'Add "reason": "..." only when valid=false. Preserve dish order.'
-    )
-
     error_section = ""
     if errors:
         error_lines = "\n".join(f"- {e}" for e in errors)
         error_section = f"\nPREVIOUS ERRORS — fix these before responding:\n{error_lines}"
 
-    user = f"{meat_section}\n\n{veg_section}\n\n{output_format}{error_section}"
+    user = f"{meat_section}\n\n{veg_section}\n\n{NAMING_OUTPUT_FORMAT}{error_section}"
 
     return [
-        cast(ChatCompletionMessageParam, {"role": "system", "content": system}),
+        cast(ChatCompletionMessageParam, {"role": "system", "content": NAMING_SYSTEM_PROMPT}),
         cast(ChatCompletionMessageParam, {"role": "user", "content": user}),
     ]
 

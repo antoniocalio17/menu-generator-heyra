@@ -13,17 +13,17 @@ import random
 from dataclasses import dataclass, field
 
 from engine.catalogue import Catalogue, Product
-from engine.constants import CUISINE_ROTATION, DAYS
+from engine.constants import CUISINE_ROTATION, DAYS, WEEKLY_BUDGET_EUR
 from engine.output_format import Dish, Ingredient
 
 logger = logging.getLogger(__name__)
 
 _ROLE_QUANTITY: dict[str, float] = {
-    "protein_meat": 150.0,
-    "protein_veg":  150.0,
-    "carb":         120.0,
-    "vegetable":    100.0,
-    "sauce":         30.0,
+    "protein_meat": 100.0,
+    "protein_veg":  100.0,
+    "carb":          80.0,
+    "vegetable":     60.0,
+    "sauce":         10.0,
 }
 
 _WEIGHT_MATCH:     int = 3   
@@ -121,6 +121,22 @@ def _compose_dish(
     )
 
 
+def _fit_protein_to_budget(dish: ComposedDish) -> ComposedDish:
+    """Scale protein quantity down if this dish alone would bust the daily budget."""
+    daily_budget = WEEKLY_BUDGET_EUR / len(DAYS)
+    fixed_cost = sum(p["cost_per_100g_eur"] * qty / 100 for p, qty in dish.products[1:])
+    remaining = daily_budget - fixed_cost
+    protein, protein_qty = dish.products[0]
+    if protein["cost_per_100g_eur"] * protein_qty / 100 <= remaining:
+        return dish
+    new_qty = round(remaining / (protein["cost_per_100g_eur"] / 100), 1)
+    logger.debug(
+        "Protein qty capped %.0fg→%.1fg (%s) to fit daily budget",
+        protein_qty, new_qty, protein["product_name"],
+    )
+    return ComposedDish(cuisine=dish.cuisine, products=[(protein, new_qty)] + list(dish.products[1:]))
+
+
 def compose_single_dish(
     track: str,
     cuisine: str,
@@ -141,7 +157,7 @@ def compose_week(track: str, catalogue: Catalogue) -> list[ComposedDish]:
     dishes: list[ComposedDish] = []
 
     for day, cuisine in zip(DAYS, CUISINE_ROTATION, strict=True):
-        dish = _compose_dish(track, cuisine, catalogue, seen_sets)
+        dish = _fit_protein_to_budget(_compose_dish(track, cuisine, catalogue, seen_sets))
         seen_sets.append(dish.ingredient_set())
         dishes.append(dish)
         ingredients_str = " + ".join(p["product_name"] for p, _ in dish.products)

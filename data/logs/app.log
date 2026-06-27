@@ -1,685 +1,363 @@
-2026-06-26 12:17:54 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 12:18:06 [INFO    ] api.main: Generate request — year=2026 week=37
-2026-06-26 12:18:06 [INFO    ] engine.groq_llama: LLM call — attempt 1/3 week_start=2026-09-07
-2026-06-26 12:18:08 [INFO    ] engine.groq_llama: Valid plan received on attempt 1
-2026-06-26 12:18:08 [INFO    ] api.main: LLM plan ready — year=2026 week=37
-2026-06-26 12:18:08 [INFO    ] api.main: Menu saved — year=2026 week=37 fallback=False
-2026-06-26 15:12:56 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:13:03 [INFO    ] api.main: Generate request — year=2026 week=38
-2026-06-26 15:13:03 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-09-14
-2026-06-26 15:13:03 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh Razor Clams + Soba Noodles + Jerusalem Artichokes + Sumac
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Tuesday [asian]: Ground Turkey + Hulled Millet + Fresh Lion's Mane Mushrooms + Low-fat Drinking Yogurt
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Wednesday [nordic]: Organic Duck Confit + Gluten-free Ciabatta + Fresh Cloud Ear Mushrooms + Tartar Sauce
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Thursday [middle_eastern]: Fresh Barramundi + Gluten-free Arepas + Organic Hijiki + Pea Milk
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Friday [mediterranean]: Free-range Pork Tenderloin + Gluten-free Strozzapreti + Organic Water Chestnuts + Reduced-sodium Salsa Criolla
-2026-06-26 15:13:03 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:13:03 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Monday [mediterranean]: Canned Heirloom Beans + Gluten-free Rice Paper + Organic Bottle Gourd + Olive Tapenade
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Tuesday [asian]: Grated Cheese Curds + Cavatelli + Fresh Cordyceps Mushrooms + Pasteurised Raw Milk
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Wednesday [nordic]: Jackfruit + Pearl Barley + Lettuce + Dried Za'atar Leaves
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Thursday [middle_eastern]: Canned Urad Dal + Gluten-free Baguette + Organic Green Beans + Unsweetened Vanilla Almond Milk
-2026-06-26 15:13:03 [INFO    ] engine.composer:   Friday [mediterranean]: Mizithra + Strozzapreti + Dried White Mushrooms + Organic Donkey Milk
-2026-06-26 15:13:03 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:13:03 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:14:57 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:15:02 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:15:10 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:15:28 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:15:35 [INFO    ] api.main: Generate request — year=2026 week=38
-2026-06-26 15:15:35 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-09-14
-2026-06-26 15:15:35 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Monday [mediterranean]: Free-range Whole Chicken + Macaroni + Drumstick Pods + Suya Spice
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Tuesday [asian]: Spot Prawns + White Rice + Dried Lobster Mushrooms + Barista Pea Milk
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Wednesday [nordic]: Salmon Fillet + Macaroni + Organic Ginger Root + Mornay Sauce
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Thursday [middle_eastern]: Fresh Pompano + Gluten-free Soba Cha + Rutabaga + Organic Bajra Flour
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Friday [mediterranean]: Grass-fed Veal Osso Buco + Gluten-free Soba Cha + Organic Pea Shoots + Organic Spelt Flour
-2026-06-26 15:15:35 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:15:35 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Jarlsberg + Gluten-free Glass Noodles + Organic Cavolo Nero + Organic Donkey Milk
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Tuesday [asian]: Canned Lupini Beans + Quick-cook Long-grain Rice + Snow Fungus + Crystal Hot Sauce
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Robiola + Gluten-free Baguette + Wakame + Fennel Seeds
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Thursday [middle_eastern]: Organic Jackfruit + Gluten-free Whole Wheat Sandwich Bread + Organic Hijiki + Organic Bajra Flour
-2026-06-26 15:15:35 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Queso Fresco + Cornmeal + Fresh Hen of the Woods + Ground Garlic Granules
-2026-06-26 15:15:35 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:15:35 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:15:36 [ERROR   ] engine.groq_llama: Groq API error on attempt 1: Error code: 400 - {'error': {'message': 'This model does not support response format `json_schema`. See supported models at https://console.groq.com/docs/structured-outputs#supported-models', 'type': 'invalid_request_error', 'param': 'response_format'}}
-2026-06-26 15:15:36 [WARNING ] api.main: LLM failed (Groq API error: Error code: 400 - {'error': {'message': 'This model does not support response format `json_schema`. See supported models at https://console.groq.com/docs/structured-outputs#supported-models', 'type': 'invalid_request_error', 'param': 'response_format'}}) — attempting fallback
-2026-06-26 15:15:36 [DEBUG   ] engine.fallback: Loaded dishes from 20 past menu file(s)
-2026-06-26 15:15:36 [INFO    ] engine.fallback: Fallback plan assembled — 5 meat dishes, 5 veg dishes
-2026-06-26 15:15:36 [WARNING ] api.main: Fallback plan built for year=2026 week=38
-2026-06-26 15:15:36 [INFO    ] api.main: Menu saved — year=2026 week=38 fallback=True
-2026-06-26 15:15:44 [INFO    ] api.main: Generate request — year=2026 week=44
-2026-06-26 15:15:44 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-10-26
-2026-06-26 15:15:44 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Monday [mediterranean]: Grass-fed Pork Chops + Lavash Crackers + Organic Asian Eggplant + Black Bean Paste
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Tuesday [asian]: Beef Cheek + Millet + Dried Straw Mushrooms + Skordalia
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Wednesday [nordic]: Beef Kidney + Gluten-free Linguine + Organic Potatoes + Unsweetened Pistachio Milk
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Ground Beef + Quick-cook Vialone Nano Rice + Long Beans + Cold-pressed Olive Oil
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Friday [mediterranean]: Free-range Elk Meat + Gluten-free Tortellini + Pumpkin + Clarified Butter
-2026-06-26 15:15:44 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:15:44 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Mahon + Mafaldine + Organic Napa Cabbage + Reduced-sodium Teriyaki Sauce
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Cabrales + Organic Wild Rice + Organic Spinach + Unsweetened Flax Milk
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Wednesday [nordic]: Buffalo Mozzarella + Sourdough Loaf + Organic Yams + Pears
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Thursday [middle_eastern]: Roasted Pine Nuts + Whole Grain Bulgur Wheat + Snow Fungus + Pineapples
-2026-06-26 15:15:44 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Scamorza + Gluten-free Anelletti + Organic Okra + Organic Lactose-free Milk
-2026-06-26 15:15:44 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:15:44 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:15:44 [ERROR   ] engine.groq_llama: Groq API error on attempt 1: Error code: 400 - {'error': {'message': 'This model does not support response format `json_schema`. See supported models at https://console.groq.com/docs/structured-outputs#supported-models', 'type': 'invalid_request_error', 'param': 'response_format'}}
-2026-06-26 15:15:44 [WARNING ] api.main: LLM failed (Groq API error: Error code: 400 - {'error': {'message': 'This model does not support response format `json_schema`. See supported models at https://console.groq.com/docs/structured-outputs#supported-models', 'type': 'invalid_request_error', 'param': 'response_format'}}) — attempting fallback
-2026-06-26 15:15:44 [DEBUG   ] engine.fallback: Loaded dishes from 21 past menu file(s)
-2026-06-26 15:15:44 [INFO    ] engine.fallback: Fallback plan assembled — 5 meat dishes, 5 veg dishes
-2026-06-26 15:15:44 [WARNING ] api.main: Fallback plan built for year=2026 week=44
-2026-06-26 15:15:44 [INFO    ] api.main: Menu saved — year=2026 week=44 fallback=True
-2026-06-26 15:15:45 [INFO    ] api.main: Generate request — year=2026 week=43
-2026-06-26 15:15:45 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-10-19
-2026-06-26 15:15:45 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Monday [mediterranean]: Pork Loin + Gluten-free Shirataki Noodles + Fiddlehead Ferns + Dried Bergamot Leaves
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Tuesday [asian]: Elk Meat + Gluten-free Roti + Organic Poblano Peppers + Organic Spelt Flour
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Wednesday [nordic]: Duck Liver + Gluten-free Roti + Organic Butternut Squash + Clotted Cream
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Beef Flank Steak + Triticale + Organic Yu Choy + Ground Dried Chipotle Chiles
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Friday [mediterranean]: Fresh Surimi + Dosa + Organic Arugula + Garlic Granules
-2026-06-26 15:15:45 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:15:45 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Roquefort + Trofie + Fresh Portobello Mushrooms + Reduced-sodium Coconut Curry Sauce
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Tuesday [asian]: Grated Caciocavallo + Dosa + Yams + Cream of Mushroom Sauce
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Roquefort + Shirataki Noodles + Red Bell Peppers + Organic Tigernut Flour
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Thursday [middle_eastern]: Cranberry Beans + Gluten-free Ravioli + Okra + Ground Amchur Powder
-2026-06-26 15:15:45 [INFO    ] engine.composer:   Friday [mediterranean]: Parmigiano Reggiano + Gluten-free Tagliatelle + Fresh Shiitake Mushrooms + Organic Mandarins
-2026-06-26 15:15:45 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:15:45 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:15:45 [ERROR   ] engine.groq_llama: Groq API error on attempt 1: Error code: 400 - {'error': {'message': 'This model does not support response format `json_schema`. See supported models at https://console.groq.com/docs/structured-outputs#supported-models', 'type': 'invalid_request_error', 'param': 'response_format'}}
-2026-06-26 15:15:45 [WARNING ] api.main: LLM failed (Groq API error: Error code: 400 - {'error': {'message': 'This model does not support response format `json_schema`. See supported models at https://console.groq.com/docs/structured-outputs#supported-models', 'type': 'invalid_request_error', 'param': 'response_format'}}) — attempting fallback
-2026-06-26 15:15:45 [DEBUG   ] engine.fallback: Loaded dishes from 22 past menu file(s)
-2026-06-26 15:15:45 [INFO    ] engine.fallback: Fallback plan assembled — 5 meat dishes, 5 veg dishes
-2026-06-26 15:15:45 [WARNING ] api.main: Fallback plan built for year=2026 week=43
-2026-06-26 15:15:45 [INFO    ] api.main: Menu saved — year=2026 week=43 fallback=True
-2026-06-26 15:17:16 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:17:24 [INFO    ] api.main: Generate request — year=2026 week=42
-2026-06-26 15:17:24 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-10-12
-2026-06-26 15:17:24 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Monday [mediterranean]: Capicola + Gluten-free Banh Mi Rolls + Button Mushrooms + Dried Thai Mint
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Tuesday [asian]: Organic Chicken Breast + Organic Brown Rice + Dried Trumpet Mushrooms + Cold-pressed Camelina Oil
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Wednesday [nordic]: Fresh Snapper + Hokkien Noodles + Dried Truffle + Organic Golden Syrup
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Ground Lamb + Gluten-free Farfalle + Spinach + Blackberries
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Friday [mediterranean]: Pork Loin + Hokkien Noodles + Serrano Peppers + Nuoc Cham
-2026-06-26 15:17:24 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:17:24 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Anari + Sopes + Organic Dulse Flakes + Cashew Milk
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Tuesday [asian]: Egg Yolks + Orzo + Organic Water Chestnuts + Korma Sauce
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Panela + Gluten-free Rice Noodles + Organic Nopales + Frank's Style Hot Sauce
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grated Goat Cheese + Gluten-free Dinner Rolls + Organic Red Onions + Ground Star Anise
-2026-06-26 15:17:24 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Queso Chihuahua + Tricolor Quinoa + Fresh Hen of the Woods + Watermelon
-2026-06-26 15:17:24 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:17:24 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:17:25 [ERROR   ] engine.groq_llama: Groq API error on attempt 1: Error code: 400 - {'error': {'message': "'messages' must contain the word 'json' in some form, to use 'response_format' of type 'json_object'.", 'type': 'invalid_request_error'}}
-2026-06-26 15:17:25 [WARNING ] api.main: LLM failed (Groq API error: Error code: 400 - {'error': {'message': "'messages' must contain the word 'json' in some form, to use 'response_format' of type 'json_object'.", 'type': 'invalid_request_error'}}) — attempting fallback
-2026-06-26 15:17:25 [DEBUG   ] engine.fallback: Loaded dishes from 23 past menu file(s)
-2026-06-26 15:17:25 [INFO    ] engine.fallback: Fallback plan assembled — 5 meat dishes, 5 veg dishes
-2026-06-26 15:17:25 [WARNING ] api.main: Fallback plan built for year=2026 week=42
-2026-06-26 15:17:25 [INFO    ] api.main: Menu saved — year=2026 week=42 fallback=True
-2026-06-26 15:20:46 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:20:48 [INFO    ] api.main: Generate request — year=2026 week=26
-2026-06-26 15:20:48 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-22
-2026-06-26 15:20:48 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Monday [mediterranean]: Whelks + Cavatappi + Organic Mache + Longan
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Veal Shank + Organic Aged Basmati Rice + Bamboo Shoots + Mayonnaise
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Wednesday [nordic]: Whole Lobster + Lasagne Sheets + Acorn Squash + Dried Tarragon
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Thursday [middle_eastern]: Sopressata + Fonio + Organic Watercress + Dried Mango
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Friday [mediterranean]: Chicken Skin + Fougasse + Dried King Oyster Mushrooms + Mint Raita
-2026-06-26 15:20:48 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:20:48 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Monday [mediterranean]: Caciotta + Gluten-free Pumpernickel Rolls + Organic Watercress + Rice Milk
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Tuesday [asian]: Roasted Walnut Halves + Hamburger Buns + Yu Choy + Unsweetened Chocolate Oat Milk
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Wednesday [nordic]: Grated Smoked Paneer + Pici + Dried Hen of the Woods + Reduced-sodium Hollandaise Sauce
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Thursday [middle_eastern]: Butter Beans + Whole Grain Spelt + Wakame + Rosemary Olive Oil
-2026-06-26 15:20:48 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Manouri + Linguine + Organic Anaheim Peppers + Reduced-sodium Mushroom Stock
-2026-06-26 15:20:48 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:20:48 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:20:51 [WARNING ] engine.groq_llama: Attempt 1 — schema validation failed: 2 validation errors for NamingResponse
-meat
-  Field required [type=missing, input_value={'Dish 1': {'name': 'Medi... 2829}], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian
-  Field required [type=missing, input_value={'Dish 1': {'name': 'Medi... 2829}], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-2026-06-26 15:20:51 [INFO    ] engine.groq_llama: LLM naming call — attempt 2/3
-2026-06-26 15:20:53 [WARNING ] engine.groq_llama: Attempt 2 — schema validation failed: 2 validation errors for NamingResponse
-meat
-  Field required [type=missing, input_value={'MEAT TRACK': {'Dish 1':...2829}], 'valid': True}}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian
-  Field required [type=missing, input_value={'MEAT TRACK': {'Dish 1':...2829}], 'valid': True}}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-2026-06-26 15:20:53 [INFO    ] engine.groq_llama: LLM naming call — attempt 3/3
-2026-06-26 15:20:55 [WARNING ] engine.groq_llama: Attempt 3 — schema validation failed: 2 validation errors for NamingResponse
-meat
-  Field required [type=missing, input_value={'MEAT TRACK': {'Dish 1':... 2829], 'valid': True}}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian
-  Field required [type=missing, input_value={'MEAT TRACK': {'Dish 1':... 2829], 'valid': True}}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-2026-06-26 15:20:55 [ERROR   ] engine.groq_llama: All 3 attempts failed. Last response: {
-  "MEAT TRACK":{
-      "Dish 1":{
-         "name":"Whelks Mediterranean Delight",
-         "description":"Savor the flavors of the Mediterranean with Whelks, Cavatappi, Organic Mache, and a hint of 
-2026-06-26 15:20:55 [WARNING ] api.main: LLM failed (Failed to name dishes after 3 attempts. Last error: 2 validation errors for NamingResponse
-meat
-  Field required [type=missing, input_value={'MEAT TRACK': {'Dish 1':... 2829], 'valid': True}}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian
-  Field required [type=missing, input_value={'MEAT TRACK': {'Dish 1':... 2829], 'valid': True}}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing) — attempting fallback
-2026-06-26 15:20:55 [DEBUG   ] engine.fallback: Loaded dishes from 0 past menu file(s)
-2026-06-26 15:20:55 [ERROR   ] api.main: Fallback failed: Not enough distinct past dishes to build a fallback menu (need 5, found 0 unique across all saved weeks)
-2026-06-26 15:21:20 [INFO    ] api.main: Generate request — year=2026 week=26
-2026-06-26 15:21:20 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-22
-2026-06-26 15:21:20 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh Albacore Tuna + Meat Tortellini + Organic Cabbage + Reduced-sodium Coconut Aminos
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Beef Marrow Bones + Quick-cook Koshihikari Rice + Spinach + Pasteurised UHT Milk
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Wednesday [nordic]: Beef Hanger Steak + Schuttelbrot + Organic Habanero Peppers + Lemon Yogurt
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Lamb Leg + Gluten-free Khobz + Sea Beans + Full-fat Coconut Yogurt
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Friday [mediterranean]: Fresh Lobster Claws + Whole Grain Wheat Germ + Bunashimeji Mushrooms + Ground Crushed Red Pepper
-2026-06-26 15:21:20 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:21:20 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Red Leicester + Rigatoni + Radicchio + Organic Cherries
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Tuesday [asian]: String Cheese + Knackerbrot + Organic Sunchokes + Vegan Mayonnaise
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Wednesday [nordic]: Canned Tepary Beans + Spaghetti + Organic Nori Sheets + Organic Quinoa Flour
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Thursday [middle_eastern]: Organic Goose Eggs + Country Loaf + Dried Pioppino Mushrooms + Doenjang
-2026-06-26 15:21:20 [INFO    ] engine.composer:   Friday [mediterranean]: Beemster + Gluten-free Bucatini + Organic Garlic + Sea Salt
-2026-06-26 15:21:20 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:21:20 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:21:22 [WARNING ] engine.groq_llama: Attempt 1 — schema validation failed: 2 validation errors for NamingResponse
-meat
-  Field required [type=missing, input_value={'Dish 1': {'name': 'Tuna..., 2358], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian
-  Field required [type=missing, input_value={'Dish 1': {'name': 'Tuna..., 2358], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-2026-06-26 15:21:22 [INFO    ] engine.groq_llama: LLM naming call — attempt 2/3
-2026-06-26 15:21:24 [WARNING ] engine.groq_llama: Attempt 2 — schema validation failed: 2 validation errors for NamingResponse
-meat
-  Input should be a valid array [type=list_type, input_value={'Dish 1': {'name': 'Tuna..., 2445], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/list_type
-vegetarian
-  Input should be a valid array [type=list_type, input_value={'Dish 1': {'name': 'Medi..., 2358], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/list_type
-2026-06-26 15:21:24 [INFO    ] engine.groq_llama: LLM naming call — attempt 3/3
-2026-06-26 15:21:25 [WARNING ] engine.groq_llama: Attempt 3 — schema validation failed: 10 validation errors for NamingResponse
-meat.0.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean T...8, 2795], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.1.dish_name
-  Field required [type=missing, input_value={'name': 'Asian Beef Bone...7, 1652], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.2.dish_name
-  Field required [type=missing, input_value={'name': 'Nordic Beef Han...4, 2079], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.3.dish_name
-  Field required [type=missing, input_value={'name': 'Middle Eastern ...5, 2087], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.4.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean L...3, 2445], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.0.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean C...05, 252], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.1.dish_name
-  Field required [type=missing, input_value={'name': 'Asian String Ch...2, 2663], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.2.dish_name
-  Field required [type=missing, input_value={'name': 'Nordic Tepary B...36, 912], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.3.dish_name
-  Field required [type=missing, input_value={'name': 'Middle Eastern ...7, 2698], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.4.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean B...0, 2358], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-2026-06-26 15:21:25 [ERROR   ] engine.groq_llama: All 3 attempts failed. Last response: {
-  "meat":[
-      {
-         "name":"Mediterranean Tuna Delight",
-         "description":"Fresh albacore tuna paired with meat tortellini, organic cabbage, and a hint of reduced-sodium coconut aminos
-2026-06-26 15:21:25 [WARNING ] api.main: LLM failed (Failed to name dishes after 3 attempts. Last error: 10 validation errors for NamingResponse
-meat.0.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean T...8, 2795], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.1.dish_name
-  Field required [type=missing, input_value={'name': 'Asian Beef Bone...7, 1652], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.2.dish_name
-  Field required [type=missing, input_value={'name': 'Nordic Beef Han...4, 2079], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.3.dish_name
-  Field required [type=missing, input_value={'name': 'Middle Eastern ...5, 2087], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.4.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean L...3, 2445], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.0.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean C...05, 252], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.1.dish_name
-  Field required [type=missing, input_value={'name': 'Asian String Ch...2, 2663], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.2.dish_name
-  Field required [type=missing, input_value={'name': 'Nordic Tepary B...36, 912], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.3.dish_name
-  Field required [type=missing, input_value={'name': 'Middle Eastern ...7, 2698], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.4.dish_name
-  Field required [type=missing, input_value={'name': 'Mediterranean B...0, 2358], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing) — attempting fallback
-2026-06-26 15:21:25 [DEBUG   ] engine.fallback: Loaded dishes from 0 past menu file(s)
-2026-06-26 15:21:25 [ERROR   ] api.main: Fallback failed: Not enough distinct past dishes to build a fallback menu (need 5, found 0 unique across all saved weeks)
-2026-06-26 15:21:27 [INFO    ] api.main: Generate request — year=2026 week=26
-2026-06-26 15:21:27 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-22
-2026-06-26 15:21:27 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Monday [mediterranean]: Lamb Rack + Gnocchi + Mung Bean Sprouts + Goat Butter
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Ground Chicken + Gluten-free Whole Wheat Sandwich Bread + Mung Bean Sprouts + Fennel Seeds
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Wednesday [nordic]: Grass-fed Beef Liver + Cannelloni + Organic Acorn Squash + Organic Kiwis
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Thursday [middle_eastern]: Guinea Fowl + Brioche + Bamboo Shoots + Organic Molasses
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Friday [mediterranean]: Organic Chicken Skin + Whole Grain Black Glutinous Rice + Button Mushrooms + Barista Tigernut Milk
-2026-06-26 15:21:27 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:21:27 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Stinking Bishop + Gluten-free Roti + Truffle + Organic Mexican Crema
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Tuesday [asian]: Grated Bel Paese + Hamburger Buns + Dried Lobster Mushrooms + Holy Basil
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Wednesday [nordic]: Wheat Seitan + Whole Grain Black Glutinous Rice + Organic Daikon Radish + Kalonji
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Thursday [middle_eastern]: Pressed Tofu + Cornmeal + Ivy Gourd + Tigernut Flour
-2026-06-26 15:21:27 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Gorgonzola + Pad Thai Rice Noodles + Eggplant + Mole Spice Blend
-2026-06-26 15:21:27 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:21:27 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:21:29 [WARNING ] engine.groq_llama: Attempt 1 — schema validation failed: 2 validation errors for NamingResponse
-meat
-  Field required [type=missing, input_value={'Dish 1': {'name': 'Lamb..., 2514], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian
-  Field required [type=missing, input_value={'Dish 1': {'name': 'Lamb..., 2514], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-2026-06-26 15:21:29 [INFO    ] engine.groq_llama: LLM naming call — attempt 2/3
-2026-06-26 15:21:31 [WARNING ] engine.groq_llama: Attempt 2 — schema validation failed: 2 validation errors for NamingResponse
-meat
-  Input should be a valid array [type=list_type, input_value={'Dish 1': {'name': 'Lamb..., 3119], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/list_type
-vegetarian
-  Input should be a valid array [type=list_type, input_value={'Dish 1': {'name': 'Stin..., 2514], 'valid': True}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/list_type
-2026-06-26 15:21:31 [INFO    ] engine.groq_llama: LLM naming call — attempt 3/3
-2026-06-26 15:21:32 [WARNING ] engine.groq_llama: Attempt 3 — schema validation failed: 10 validation errors for NamingResponse
-meat.0.dish_name
-  Field required [type=missing, input_value={'name': 'Lamb Gnocchi De...1, 2186], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.1.dish_name
-  Field required [type=missing, input_value={'name': 'Chicken Fennel ...1, 2338], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.2.dish_name
-  Field required [type=missing, input_value={'name': 'Beef Liver Cann...64, 276], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.3.dish_name
-  Field required [type=missing, input_value={'name': 'Guinea Fowl Bri...1, 2935], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.4.dish_name
-  Field required [type=missing, input_value={'name': 'Chicken Skin Ri...6, 3119], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.0.dish_name
-  Field required [type=missing, input_value={'name': 'Stinking Bishop...8, 2191], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.1.dish_name
-  Field required [type=missing, input_value={'name': 'Bel Paese Buns'...4, 2562], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.2.dish_name
-  Field required [type=missing, input_value={'name': 'Wheat Seitan Bo...8, 2456], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.3.dish_name
-  Field required [type=missing, input_value={'name': 'Pressed Tofu Co...73, 917], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.4.dish_name
-  Field required [type=missing, input_value={'name': 'Gorgonzola Nood...7, 2514], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-2026-06-26 15:21:32 [ERROR   ] engine.groq_llama: All 3 attempts failed. Last response: {
-  "meat":[
-      {
-         "name":"Lamb Gnocchi Delight",
-         "description":"Savoury lamb rack paired with soft gnocchi, mung bean sprouts, and a hint of goat butter.",
-         "ingredients":
-2026-06-26 15:21:32 [WARNING ] api.main: LLM failed (Failed to name dishes after 3 attempts. Last error: 10 validation errors for NamingResponse
-meat.0.dish_name
-  Field required [type=missing, input_value={'name': 'Lamb Gnocchi De...1, 2186], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.1.dish_name
-  Field required [type=missing, input_value={'name': 'Chicken Fennel ...1, 2338], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.2.dish_name
-  Field required [type=missing, input_value={'name': 'Beef Liver Cann...64, 276], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.3.dish_name
-  Field required [type=missing, input_value={'name': 'Guinea Fowl Bri...1, 2935], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-meat.4.dish_name
-  Field required [type=missing, input_value={'name': 'Chicken Skin Ri...6, 3119], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.0.dish_name
-  Field required [type=missing, input_value={'name': 'Stinking Bishop...8, 2191], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.1.dish_name
-  Field required [type=missing, input_value={'name': 'Bel Paese Buns'...4, 2562], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.2.dish_name
-  Field required [type=missing, input_value={'name': 'Wheat Seitan Bo...8, 2456], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.3.dish_name
-  Field required [type=missing, input_value={'name': 'Pressed Tofu Co...73, 917], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing
-vegetarian.4.dish_name
-  Field required [type=missing, input_value={'name': 'Gorgonzola Nood...7, 2514], 'valid': True}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.12/v/missing) — attempting fallback
-2026-06-26 15:21:32 [DEBUG   ] engine.fallback: Loaded dishes from 0 past menu file(s)
-2026-06-26 15:21:32 [ERROR   ] api.main: Fallback failed: Not enough distinct past dishes to build a fallback menu (need 5, found 0 unique across all saved weeks)
-2026-06-26 15:21:48 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:22:02 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:22:05 [INFO    ] api.main: Generate request — year=2026 week=26
-2026-06-26 15:22:05 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-22
-2026-06-26 15:22:05 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Monday [mediterranean]: Beef Kidney + Banh Mi Rolls + Organic Sunchokes + Organic Elderberries
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Chicken Gizzards + Hokkien Noodles + Fresh Snow Fungus + Lovage
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Duck Breast + Dumpling Wrappers + Organic Sweet Potatoes + Full-fat Pomegranate Yogurt
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grass-fed Beef Short Ribs + Sorghum + Turnips + Cocktail Sauce
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Friday [mediterranean]: Lamb Shoulder + Gluten-free English Muffins + Fiddlehead Ferns + Salted Lassi
-2026-06-26 15:22:05 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:22:05 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Emmental + Organic Koshihikari Rice + Organic Napa Cabbage + Dukkah
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Tuesday [asian]: Munster + Gluten-free English Muffins + Hedgehog Mushrooms + Frozen Oranges
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Wednesday [nordic]: Grated Panela + Gluten-free Aloo Paratha + Fresh Beech Mushrooms + Pecan Meal
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Thursday [middle_eastern]: Sliced Esrom + Whole Grain Wheat Germ + Organic Cavolo Nero + Toasted Sesame Oil
-2026-06-26 15:22:05 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Limburger + Sticky Rice + Romanesco + Dried Curry Leaves
-2026-06-26 15:22:05 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:22:05 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:22:08 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:22:08 [INFO    ] api.main: LLM plan ready — year=2026 week=26
-2026-06-26 15:22:08 [INFO    ] api.main: Menu saved — year=2026 week=26 fallback=False
-2026-06-26 15:22:44 [INFO    ] api.main: Generate request — year=2026 week=27
-2026-06-26 15:22:44 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-29
-2026-06-26 15:22:44 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh Smoked Mussels + Gluten-free Trofie + Spring Onions + Reduced-sodium Peanut Sauce
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Tuesday [asian]: Pork Cheek + Gluten-free Puri + Organic Kombu + Sichuan Sauce
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Wednesday [nordic]: Lap Cheong + Teff + Bell Peppers + Ground Garlic Powder
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Thursday [middle_eastern]: Beef Tongue + Whole Grain Pearl Barley + Organic Bottle Gourd + Ground Cloves
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Friday [mediterranean]: Smoked Black Forest Ham + Gluten-free Conchiglie + Dried Cordyceps Mushrooms + Reduced-sodium Mornay Sauce
-2026-06-26 15:22:44 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:22:44 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Monday [mediterranean]: Taleggio + Gluten-free Sourdough Loaf + Yellow Bell Peppers + Reduced-sodium Thai Sweet Chili
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Tuesday [asian]: Canned Cannellini Beans + Camargue Red Rice + Dried Velvet Pioppini + Sambal Oelek
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Wednesday [nordic]: Gorgonzola + Calrose Rice + Red Bell Peppers + Reduced-sodium Kecap Manis
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Thursday [middle_eastern]: Macadamia Nuts + Gluten-free Crispbread + Organic Lotus Root + Organic Half-and-Half
-2026-06-26 15:22:44 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Caerphilly + Knackerbrot + Habanero Peppers + Organic Stevia Sweetener
-2026-06-26 15:22:44 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:22:44 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:22:46 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:22:46 [INFO    ] api.main: LLM plan ready — year=2026 week=27
-2026-06-26 15:22:46 [INFO    ] api.main: Menu saved — year=2026 week=27 fallback=False
-2026-06-26 15:22:47 [INFO    ] api.main: Generate request — year=2026 week=27
-2026-06-26 15:22:47 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-29
-2026-06-26 15:22:47 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Monday [mediterranean]: Free-range Lamb Neck + Quick-cook Aged Basmati Rice + Dried Truffle + Low-fat Filmjolk
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Tuesday [asian]: Beef Bavette + Organic Red Rice + Fresh Cloud Ear Mushrooms + Organic Bergamot Oranges
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Wednesday [nordic]: Pork Loin + Gluten-free Aloo Paratha + Eggplant + Pickled Onions
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Thursday [middle_eastern]: Chicken Feet + Whole Grain Pearl Couscous + Edamame + Ground Garlic Powder
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Friday [mediterranean]: Ground Turkey + Whole Grain Kamut Berries + Organic Bamboo Shoots + Frozen Bergamot Oranges
-2026-06-26 15:22:47 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:22:47 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Monday [mediterranean]: Organic Young Green Jackfruit + Ciabatta + Radishes + Organic Tapioca Flour
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Tuesday [asian]: Grated Chevre + Organic Basmati Rice + Dried Maitake Mushrooms + Ground Pink Himalayan Salt
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Wednesday [nordic]: Grated Double Gloucester + Jasmine Rice + Organic Brussels Sprouts + Amchur Powder
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Thursday [middle_eastern]: Iberico Cheese + Oat Bran + Jerusalem Artichokes + Low-fat Greek Yogurt
-2026-06-26 15:22:47 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Requeson + Glass Noodles + Black Truffle + Frozen Strawberries
-2026-06-26 15:22:47 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:22:47 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:22:49 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:22:49 [INFO    ] api.main: LLM plan ready — year=2026 week=27
-2026-06-26 15:22:49 [INFO    ] api.main: Menu saved — year=2026 week=27 fallback=False
-2026-06-26 15:22:51 [INFO    ] api.main: Generate request — year=2026 week=27
-2026-06-26 15:22:51 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-29
-2026-06-26 15:22:51 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Monday [mediterranean]: Free-range Pork Spare Ribs + Whole Grain Black Glutinous Rice + Yu Choy + Dried Dill
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Beef Hanger Steak + Quick-cook Jasmine Rice + Daikon Radish + Organic Teff Flour
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Chicken Breast + Jasmine Rice + Organic Raw Banana + Ground Turmeric
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Ground Chicken + Gluten-free Naan + Watercress + Goat Milk
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Friday [mediterranean]: Fresh Crab Meat + Gluten-free Spinach Tagliatelle + Organic Brussels Sprouts + Frozen Plums
-2026-06-26 15:22:51 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:22:51 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Stilton + Gluten-free Breadsticks + Radicchio + Mushroom Stock
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Tuesday [asian]: Organic Silken Tofu + Quick-cook Vialone Nano Rice + Organic Ginger Root + Lychees
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Wednesday [nordic]: Large Brown Eggs + English Muffins + Organic Eggplant + Spinach Artichoke Dip
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Thursday [middle_eastern]: Whole Urad Beans + Wheat Berries + Red Onions + Honeydew Melon
-2026-06-26 15:22:51 [INFO    ] engine.composer:   Friday [mediterranean]: Akkawi + Ravioli + Organic Kabocha Squash + Low-fat Coconut Yogurt
-2026-06-26 15:22:51 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:22:51 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:22:52 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:22:52 [INFO    ] api.main: LLM plan ready — year=2026 week=27
-2026-06-26 15:22:52 [INFO    ] api.main: Menu saved — year=2026 week=27 fallback=False
-2026-06-26 15:22:53 [INFO    ] api.main: Generate request — year=2026 week=27
-2026-06-26 15:22:53 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-29
-2026-06-26 15:22:53 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Monday [mediterranean]: Free-range Veal Cutlets + Mafaldine + Dried King Oyster Mushrooms + Garlic Oil
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Tuesday [asian]: Whole Turkey + Organic Sticky Rice + Fresh Black Truffle + Frozen Coconut Flesh
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Wednesday [nordic]: Grass-fed Beef Sirloin + Organic Basmati Rice + Organic Turnips + Organic Sorghum Flour
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grass-fed Ground Lamb + Quick-cook Sticky Rice + Organic Broccoli + Full-fat Drinking Yogurt
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Friday [mediterranean]: Grass-fed Pork Spare Ribs + Whole Grain Mochi Rice + Ginger Root + Vodka Sauce
-2026-06-26 15:22:53 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:22:53 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Monday [mediterranean]: Goat Brie + Mantou + Organic Fennel Bulb + Dried Cilantro
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Salted Duck Eggs + Breadsticks + Organic Taro Root + Wasabi Paste
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Wednesday [nordic]: Whole Moong Beans + Pumpernickel Rolls + Organic Chayote Squash + Organic Kumquats
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Thursday [middle_eastern]: Pheasant Eggs + Whole Grain Tricolor Quinoa + Frisee + Walnut Milk
-2026-06-26 15:22:53 [INFO    ] engine.composer:   Friday [mediterranean]: Stilton + Conchiglie + Organic Celery + Organic Evaporated Milk
-2026-06-26 15:22:53 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:22:53 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:22:55 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:22:55 [INFO    ] api.main: LLM plan ready — year=2026 week=27
-2026-06-26 15:22:55 [INFO    ] api.main: Menu saved — year=2026 week=27 fallback=False
-2026-06-26 15:22:57 [INFO    ] api.main: Generate request — year=2026 week=28
-2026-06-26 15:22:57 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-06
-2026-06-26 15:22:57 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Monday [mediterranean]: Chicken Drumsticks + Mafaldine + Yams + Ground Goda Masala
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Tuesday [asian]: Grass-fed Pork Spare Ribs + Quick-cook Brown Basmati Rice + Organic Red Bell Peppers + Dried Lemongrass
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Wednesday [nordic]: Whiteleg Shrimp + Cavatelli + Organic Acorn Squash + Crema Catalana Base
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Thursday [middle_eastern]: Smoked Saucisson Sec + Egg Noodles + Beech Mushrooms + Sorghum Syrup
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Friday [mediterranean]: Grouse + Ziti + Organic Avocados + Unsweetened Vanilla Almond Milk
-2026-06-26 15:22:57 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:22:57 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Brie + Gluten-free Rice Noodles + Nori Sheets + Hing Powder
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Tuesday [asian]: Nabulsi Cheese + Quick-cook Glutinous Rice + Chinese Broccoli + Reduced-sodium Black Bean Garlic Sauce
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Wednesday [nordic]: Egg Yolks + Pumpernickel + Fresh Oyster Mushrooms + Grapeseed Oil
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Thursday [middle_eastern]: Whole Moong Beans + Whole Grain Cracked Wheat + Mache + Unsweetened Almond Milk
-2026-06-26 15:22:57 [INFO    ] engine.composer:   Friday [mediterranean]: Canned Mung Beans + Ziti + Oyster Mushrooms + Reduced-sodium Hoisin Sauce
-2026-06-26 15:22:57 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:22:57 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:22:59 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:22:59 [INFO    ] api.main: LLM plan ready — year=2026 week=28
-2026-06-26 15:22:59 [INFO    ] api.main: Menu saved — year=2026 week=28 fallback=False
-2026-06-26 15:27:18 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:27:21 [INFO    ] api.main: Generate request — year=2026 week=26
-2026-06-26 15:27:21 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-22
-2026-06-26 15:27:21 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Monday [mediterranean]: Chicken Liver + Anelletti + Corn + Tahini
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Tuesday [asian]: Goose Breast + Hot Dog Buns + Fiddlehead Ferns + Frozen Soursop
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Wednesday [nordic]: Smoked Black Forest Ham + Whole Grain Barley + Organic Arugula + Dried Thai Basil
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Thursday [middle_eastern]: Catfish + Gluten-free Tostada Shells + Organic Sweet Potatoes + Frozen Nectarines
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Friday [mediterranean]: Sea Urchin + Gluten-free Ravioli + Organic Carrots + Tajin
-2026-06-26 15:27:21 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:27:21 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Monday [mediterranean]: Organic Firm Tofu + Rigatoni + Globe Artichokes + Organic Plums
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Tuesday [asian]: Smoked Seitan + Organic Brown Rice + Dried Enoki Mushrooms + Lychees
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Wednesday [nordic]: Marinated Tofu + Polenta + Jerusalem Artichokes + Organic Devon Cream
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Thursday [middle_eastern]: Sliced Roncal + Gluten-free Pita Bread + Watercress + Scotch Bonnet Sauce
-2026-06-26 15:27:21 [INFO    ] engine.composer:   Friday [mediterranean]: Esrom + Ravioli + Organic Yams + Watermelon Seeds
-2026-06-26 15:27:21 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:27:21 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:27:24 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:27:24 [INFO    ] api.main: LLM plan ready — year=2026 week=26
-2026-06-26 15:27:24 [INFO    ] api.main: Menu saved — year=2026 week=26 fallback=False
-2026-06-26 15:27:54 [INFO    ] api.main: Generate request — year=2026 week=27
-2026-06-26 15:27:54 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-29
-2026-06-26 15:27:54 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Monday [mediterranean]: Duck Liver + Parboiled Rice + Sweet Potatoes + Sauce Diane
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Tuesday [asian]: Fresh Whiteleg Shrimp + Trofie + Romanesco + Reduced-sodium Pomodoro Sauce
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Wednesday [nordic]: Pickled Herring + Organic Basmati Rice + Organic Butternut Squash + Pomegranate Seeds
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Thursday [middle_eastern]: Smoked Boudin Noir + Pici + Cucumbers + Ground Furikake Seasoning
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Friday [mediterranean]: Free-range Chicken Skin + Whole Grain Teff + Jerusalem Artichokes + Cold-pressed Olive Oil
-2026-06-26 15:27:54 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:27:54 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Caciotta + Barbari Bread + Fresh Hedgehog Mushrooms + Hazelnut Meal
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Dubliner + Lo Mein Noodles + Organic Radicchio + Yuzu Kosho
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Wednesday [nordic]: Organic Large Brown Eggs + Hot Dog Buns + Organic Soybean Sprouts + Ground Black Pepper
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Thursday [middle_eastern]: Roasted Peanuts + Whole Grain Steel-cut Oats + Organic Swiss Chard + Sorghum Syrup
-2026-06-26 15:27:54 [INFO    ] engine.composer:   Friday [mediterranean]: Idiazabal + Gluten-free Lavash + Truffle + Dried Hierba Buena
-2026-06-26 15:27:54 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:27:54 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:27:56 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:27:56 [INFO    ] api.main: LLM plan ready — year=2026 week=27
-2026-06-26 15:27:56 [INFO    ] api.main: Menu saved — year=2026 week=27 fallback=False
-2026-06-26 15:28:34 [INFO    ] api.main: Generate request — year=2026 week=28
-2026-06-26 15:28:34 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-06
-2026-06-26 15:28:34 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Monday [mediterranean]: Chicken Thighs + Gluten-free Radiatori + Dried Bunashimeji Mushrooms + Almond Oil
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Tuesday [asian]: Grass-fed Ground Lamb + Quick-cook Brown Basmati Rice + Organic Mung Bean Sprouts + Low-fat Soy Yogurt
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Wednesday [nordic]: Fresh Crab Meat + Udon Noodles + Garlic + Organic Raisins
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Thursday [middle_eastern]: Sopressata + Gluten-free Chapati + Drumstick Pods + Unsweetened Macadamia Milk
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Friday [mediterranean]: Merguez Sausage + Lavash + Organic Long Beans + Raita
-2026-06-26 15:28:34 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:28:34 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Monday [mediterranean]: Cheese Curds + Spinach Tagliatelle + Organic Rutabaga + Full-fat Buffalo Milk Yogurt
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Tuesday [asian]: Soy Tempeh + Koshihikari Rice + Bok Choy + Low-fat Mango Yogurt
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Wednesday [nordic]: Grated Cabrales + Bao Buns + Broccoli + Low-fat Skyr
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Thursday [middle_eastern]: Pistachio Paste + Whole Grain Mochi Rice + Jalapeno Peppers + Frozen Star Fruit
-2026-06-26 15:28:34 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Burrata + Hokkien Noodles + Spring Onions + Horseradish
-2026-06-26 15:28:34 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:28:34 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:28:36 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:28:36 [INFO    ] api.main: LLM plan ready — year=2026 week=28
-2026-06-26 15:28:36 [INFO    ] api.main: Menu saved — year=2026 week=28 fallback=False
-2026-06-26 15:28:40 [INFO    ] api.main: Generate request — year=2026 week=29
-2026-06-26 15:28:40 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-13
-2026-06-26 15:28:40 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Monday [mediterranean]: Grass-fed Pork Loin Chops + Gluten-free Fusilli + Truffle + Reduced-sodium Teriyaki Sauce
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Pork Loin + Quick-cook Glutinous Rice + Jerusalem Artichokes + Frozen Cranberries
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Wednesday [nordic]: Beef Short Ribs + Gluten-free Squid Ink Linguine + Organic Bamboo Shoots + Jackfruit Pods
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Wild Boar + Wheat Germ + Tomatillos + Full-fat Goat Milk Yogurt
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Friday [mediterranean]: Abalone + Gluten-free Strozzapreti + Organic Mung Bean Sprouts + Rice Vinegar
-2026-06-26 15:28:40 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:28:40 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Maasdam + Naan + Celeriac + Ground Italian Seasoning
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Tuesday [asian]: Tempeh + Quick-cook Koshihikari Rice + Fresh Snow Fungus + Pomelos
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Maasdam + Gluten-free Challah + Avocados + Watermelon Seeds
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grated Edam + Gluten-free Ramen Noodles + Organic Bell Peppers + Ground Panch Phoron
-2026-06-26 15:28:40 [INFO    ] engine.composer:   Friday [mediterranean]: Robiola + Khobz + Dried Dried Porcini Powder + Reduced-sodium Thai Sweet Chili
-2026-06-26 15:28:40 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:28:40 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:28:42 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:28:42 [INFO    ] api.main: LLM plan ready — year=2026 week=29
-2026-06-26 15:28:42 [INFO    ] api.main: Menu saved — year=2026 week=29 fallback=False
-2026-06-26 15:48:54 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:49:51 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 15:50:33 [INFO    ] api.main: Generate request — year=2026 week=30
-2026-06-26 15:50:33 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-20
-2026-06-26 15:50:33 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Monday [mediterranean]: Beef Stew Meat + Gluten-free Meat Tortellini + Organic Arugula + Reduced-sodium Black Vinegar
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Tuesday [asian]: Albacore Tuna + Whole Grain Mochi Rice + Maitake Mushrooms + Low-fat Coffee Yogurt
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Wednesday [nordic]: Organic Chicken Skin + Barbari Bread + Avocados + Smen
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Ground Chicken + Cracked Wheat + Hijiki + Peri Peri Seasoning
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Friday [mediterranean]: Sea Urchin + Gluten-free Egg Noodles + Cucumbers + Ground Cubeb Pepper
-2026-06-26 15:50:33 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 15:50:33 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Monday [mediterranean]: Organic Hard-boiled Eggs + Wide Rice Noodles + Fresh Straw Mushrooms + Vegetable Stock
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Duck Eggs + Gluten-free Pumpernickel + Organic Acorn Squash + Organic Goat Butter
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Wednesday [nordic]: Organic Century Eggs + Quick-cook Carnaroli Rice + Butternut Squash + Onion Powder
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grated Jarlsberg + Hokkien Noodles + Radishes + Garam Masala
-2026-06-26 15:50:33 [INFO    ] engine.composer:   Friday [mediterranean]: Organic Salted Duck Eggs + Whole Grain Quinoa + Sweet Potatoes + Cold-pressed Almond Oil
-2026-06-26 15:50:33 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 15:50:33 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 15:50:35 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 15:50:35 [INFO    ] api.main: LLM plan ready — year=2026 week=30
-2026-06-26 15:50:35 [INFO    ] api.main: Menu saved — year=2026 week=30 fallback=False
-2026-06-26 16:24:20 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 16:24:53 [INFO    ] api.main: Generate request — year=2026 week=31
-2026-06-26 16:24:53 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-27
-2026-06-26 16:24:53 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Monday [mediterranean]: Oxtail + Gluten-free Squid Ink Linguine + Organic Pea Shoots + Rosemary
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Tuesday [asian]: Fresh Conch Meat + Gluten-free Challah + Organic Red Bell Peppers + Ssamjang
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Wednesday [nordic]: Grass-fed Beef Tri-tip + Whole Grain Instant Oats + Organic Endive + Onion Powder
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grass-fed Bison Meat + Gluten-free Gnocchi + Organic Beets + Full-fat Bulgarian Yogurt
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Friday [mediterranean]: Tilapia + Linguine + Organic Red Bell Peppers + Holy Basil
-2026-06-26 16:24:53 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 16:24:53 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Monday [mediterranean]: Fourme d'Ambert + Gluten-free Fougasse + Dried Porcini Powder + Parsley
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Garrotxa + Whole Grain Triticale + Fresh Truffle + Putanesca Sauce
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Stracchino + Gluten-free Squid Ink Linguine + Organic Daikon Radish + Reduced-sodium Mornay Sauce
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grated Asiago + Knackerbrot + Organic Cabbage + Full-fat Raspberry Yogurt
-2026-06-26 16:24:53 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Taleggio + Ramen Noodles + Organic Turnips + Cold-pressed Corn Oil
-2026-06-26 16:24:53 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 16:24:53 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 16:24:56 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 16:24:56 [INFO    ] api.main: LLM plan ready — year=2026 week=31
-2026-06-26 16:24:56 [INFO    ] api.main: Menu saved — year=2026 week=31 fallback=False
-2026-06-26 19:22:32 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 19:22:39 [INFO    ] api.main: Generate request — year=2026 week=32
-2026-06-26 19:22:39 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-08-03
-2026-06-26 19:22:39 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Monday [mediterranean]: Duck Confit + White Sandwich Bread + Dried Lobster Mushrooms + Dried Shiso Leaves
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Tuesday [asian]: Mortadella + Wheat Berries + Dried Shiitake Mushrooms + Dried Sawtooth Coriander
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Pork Shoulder + Bhatura + Organic Swiss Chard + Pizza Sauce
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Thursday [middle_eastern]: Quail + Whole Grain Wheat Berries + Organic Endive + Coriander Chutney
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Friday [mediterranean]: Grass-fed Beef Bavette + Whole Grain Mochi Rice + Organic Olives + Dried Hierba Buena
-2026-06-26 19:22:39 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 19:22:39 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Manouri + Strozzapreti + Butternut Squash + Ground Furikake Seasoning
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Tuesday [asian]: Marcona Almonds + Gluten-free Sourdough Loaf + Organic Globe Artichokes + Putanesca Sauce
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Wednesday [nordic]: Cashews + Black Glutinous Rice + Globe Artichokes + Red Miso Paste
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Thursday [middle_eastern]: Fourme d'Ambert + Brown Rice + Snow Fungus + Ground Rasam Powder
-2026-06-26 19:22:39 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Truffle Cheese + Whole Grain Millet + Spring Onions + Cold-pressed Grapeseed Oil
-2026-06-26 19:22:39 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 19:22:39 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 19:22:41 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 19:22:41 [INFO    ] api.main: LLM plan ready — year=2026 week=32
-2026-06-26 19:22:41 [INFO    ] api.main: Menu saved — year=2026 week=32 fallback=False
-2026-06-26 19:22:48 [INFO    ] api.main: Suggest — track=meat target=1192 candidates=3
-2026-06-26 19:23:24 [INFO    ] api.main: Dish updated — year=2026 week=32 meat/monday
-2026-06-26 19:23:39 [INFO    ] api.main: Dish updated — year=2026 week=32 meat/monday
-2026-06-26 19:31:07 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 19:31:18 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 19:31:32 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 19:31:47 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 19:34:27 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
-2026-06-26 19:34:33 [INFO    ] api.main: Generate request — year=2026 week=27
-2026-06-26 19:34:33 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-29
-2026-06-26 19:34:33 [INFO    ] engine.composer: Composing week — track=meat
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Monday [mediterranean]: Organic Partridge + Pad Thai Rice Noodles + Pea Shoots + Sesame Oil
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Tuesday [asian]: Chicken Hearts + Quick-cook Wild Rice + Dried Cloud Ear Mushrooms + Panang Curry Paste
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Wednesday [nordic]: Smoked Pastrami + Rolled Oats + Organic Kale + Oat Yogurt
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Thursday [middle_eastern]: King Crab Legs + Fonio + Fresh Reishi Mushrooms + Organic Sheep Butter
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Friday [mediterranean]: Fresh Hake + Chow Mein Noodles + Romanesco + Coconut Aminos
-2026-06-26 19:34:33 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
-2026-06-26 19:34:33 [INFO    ] engine.composer: Composing week — track=vegetarian
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Monday [mediterranean]: Feta + Bao Buns + Organic Fiddlehead Ferns + Winter Savory
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Tuesday [asian]: Grated Double Gloucester + Quick-cook Parboiled Rice + Nopales + Coriander
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Wednesday [nordic]: Grated Nabulsi Cheese + Organic Long-grain Rice + Habanero Peppers + Thousand Island Dressing
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Thursday [middle_eastern]: Candlenuts + Whole Grain Mochi Rice + Dried Chanterelle Mushrooms + Ground Star Anise
-2026-06-26 19:34:33 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Gouda + Baguette + Lettuce + Dried Pasilla Chiles
-2026-06-26 19:34:33 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
-2026-06-26 19:34:33 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
-2026-06-26 19:34:34 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
-2026-06-26 19:34:34 [INFO    ] api.main: LLM plan ready — year=2026 week=27
-2026-06-26 19:34:34 [INFO    ] api.main: Menu saved — year=2026 week=27 fallback=False
-2026-06-26 19:34:45 [INFO    ] api.main: Suggest — track=meat target=1203 candidates=3
-2026-06-26 19:35:01 [INFO    ] api.main: Rename — track=meat → Sesame Chicken Noodle Fusion
-2026-06-26 19:35:06 [INFO    ] api.main: Dish updated — year=2026 week=27 meat/monday
-2026-06-26 19:35:32 [INFO    ] api.main: Suggest — track=vegetarian target=1812 candidates=3
-2026-06-26 19:36:38 [INFO    ] api.main: Suggest — track=meat target=1064 candidates=3
-2026-06-26 19:38:15 [INFO    ] api.main: Suggest — track=meat target=632 candidates=3
-2026-06-26 19:38:16 [INFO    ] api.main: Suggest — track=meat target=3018 candidates=3
-2026-06-26 19:38:18 [INFO    ] api.main: Suggest — track=meat target=2797 candidates=3
-2026-06-26 19:38:28 [INFO    ] api.main: Rename — track=meat → Truffle Pork Fusilli Delight
+2026-06-27 12:53:58 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
+2026-06-27 12:54:13 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
+2026-06-27 12:54:38 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
+2026-06-27 12:54:45 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
+2026-06-27 12:54:49 [INFO    ] api.main: Generate request — year=2026 week=26
+2026-06-27 12:54:49 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-22
+2026-06-27 12:54:49 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Monday [mediterranean]: Free-range Whole Chicken + Multigrain Bread + Yams + Manufacturing Cream
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Tuesday [asian]: Pork Jowl + Gluten-free Sopes + Organic Jalapeno Peppers + Dried Spearmint
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Wednesday [nordic]: Tilapia + Orzo + Nopales + Cold-pressed Hazelnut Oil
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Thursday [middle_eastern]: Merguez Sausage + Gluten-free Chapati + Organic Brussels Sprouts + Acili Ezme
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Friday [mediterranean]: Conch Meat + Shirataki Noodles + Dried Straw Mushrooms + Tamarind Concentrate
+2026-06-27 12:54:49 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:54:49 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Queso Chihuahua + Gluten-free Soba Cha + Organic Fennel Bulb + Pesto
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Tuesday [asian]: Grated Smoked Scamorza + Cornmeal + White Truffle + Mole Spice Blend
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Wednesday [nordic]: Grated Triple-cream Brie + Organic Aged Basmati Rice + Organic Yu Choy + Dried Chipotle Chiles
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Hard-boiled Eggs + Flour Tortillas + Organic Wakame + Full-fat Filmjolk
+2026-06-27 12:54:49 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Cantal + Wonton Wrappers + Sunchokes + Full-fat Ayran
+2026-06-27 12:54:49 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:54:49 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:54:51 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1169 completion=769 total=1938
+2026-06-27 12:54:51 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:54:51 [INFO    ] api.main: LLM plan ready — year=2026 week=26
+2026-06-27 12:54:51 [INFO    ] api.main: Menu saved — year=2026 week=26 fallback=False
+2026-06-27 12:54:57 [INFO    ] api.main: Generate request — year=2026 week=27
+2026-06-27 12:54:57 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-29
+2026-06-27 12:54:57 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Monday [mediterranean]: Yellowfin Tuna + Orecchiette + Fresh Portobello Mushrooms + Teriyaki Sauce
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Tuesday [asian]: Smoked Lomo Iberico + Gluten-free Dosa + Drumstick Pods + Manufacturing Cream
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Wednesday [nordic]: Fresh Turbot + Bhatura + Organic Kale + Reduced-sodium Hoisin Sauce
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Thursday [middle_eastern]: Corned Beef + Forbidden Rice + Organic Globe Artichokes + Full-fat Coffee Yogurt
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Friday [mediterranean]: Smoked Culatello + Mung Bean Vermicelli + Dried Bunashimeji Mushrooms + Cold-pressed Canola Oil
+2026-06-27 12:54:57 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:54:57 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Roquefort + Wide Rice Noodles + Soybean Sprouts + Ground Urfa Biber
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Cotija + Gluten-free Country Loaf + Organic Plum Tomatoes + Teriyaki Sauce
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Wednesday [nordic]: Reblochon + Whole Grain Couscous + Organic Nori Sheets + Horseradish
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Thursday [middle_eastern]: Organic Three-grain Tempeh + Gluten-free Cheese Ravioli + Hijiki + Ground Crushed Red Pepper
+2026-06-27 12:54:57 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Robiola + Crispbread + Cucumbers + Flaxseed Oil
+2026-06-27 12:54:57 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:54:57 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:54:59 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1168 completion=752 total=1920
+2026-06-27 12:54:59 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:54:59 [INFO    ] api.main: LLM plan ready — year=2026 week=27
+2026-06-27 12:54:59 [INFO    ] api.main: Menu saved — year=2026 week=27 fallback=False
+2026-06-27 12:54:59 [INFO    ] api.main: Generate request — year=2026 week=28
+2026-06-27 12:54:59 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-06
+2026-06-27 12:54:59 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Monday [mediterranean]: Beef Tri-tip + Gluten-free Sopes + Rutabaga + Peanut Oil
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Tuesday [asian]: Calamari Rings + Whole Grain Couscous + Ivy Gourd + Ground Cumin
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Wednesday [nordic]: Fresh Bacalao + Whole Grain Oat Bran + Fresh Hen of the Woods + Putanesca Sauce
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Thursday [middle_eastern]: Yellowfin Tuna + Gluten-free Ciabatta + Organic Ivy Gourd + Calabrian Chili Paste
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Friday [mediterranean]: Bresaola + Ditalini + Sunchokes + Argan Oil
+2026-06-27 12:54:59 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:54:59 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Monday [mediterranean]: Smoked Cheddar + Gluten-free Tortellini + Organic Okra + Cold-pressed Olive Oil
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Tuesday [asian]: Organic Silken Tofu + Vialone Nano Rice + Fresh Cordyceps Mushrooms + Rice Bran Oil
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Wednesday [nordic]: Grated Roquefort + Gluten-free Schuttelbrot + Anaheim Peppers + Sambal Bajak
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Thursday [middle_eastern]: Brown Lentils + Gluten-free Banh Mi Rolls + Cucumbers + Lavender Buds
+2026-06-27 12:54:59 [INFO    ] engine.composer:   Friday [mediterranean]: Roasted Wild Pine Nuts + Aloo Paratha + Organic Bell Peppers + Cold-pressed Rosemary Olive Oil
+2026-06-27 12:54:59 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:54:59 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:01 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1157 completion=780 total=1937
+2026-06-27 12:55:01 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:01 [INFO    ] api.main: LLM plan ready — year=2026 week=28
+2026-06-27 12:55:01 [INFO    ] api.main: Menu saved — year=2026 week=28 fallback=False
+2026-06-27 12:55:08 [INFO    ] api.main: Generate request — year=2026 week=23
+2026-06-27 12:55:08 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-01
+2026-06-27 12:55:08 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:08 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh Anchovies + Gluten-free Rice Vermicelli + Organic Eggplant + Cold-pressed Toasted Sesame Oil
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Tuesday [asian]: Squab + Long-grain Rice + Kale + Organic Salted Butter
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Ground Turkey + Gluten-free Whole Wheat Sandwich Bread + Organic Bamboo Shoots + Reduced-sodium XO Sauce
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grass-fed Beef Ribeye + Gluten-free Aloo Paratha + Beech Mushrooms + Kasoori Methi
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Friday [mediterranean]: Crayfish + Gluten-free Bagels + Organic Radicchio + Ghost Pepper Sauce
+2026-06-27 12:55:09 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:09 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Cabrales + Gluten-free Pastina + Organic Artichokes + Ground Sansho Pepper
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Tuesday [asian]: Smoked Tofu + Banh Mi Rolls + Yu Choy + Tartar Sauce
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Wednesday [nordic]: Roasted Almond Butter + Chapati + Organic Okra + Full-fat Strawberry Yogurt
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Thursday [middle_eastern]: Camembert + Couscous + Dried Bunashimeji Mushrooms + Dried Chervil
+2026-06-27 12:55:09 [INFO    ] engine.composer:   Friday [mediterranean]: Beaufort + Bucatini + Organic Poblano Peppers + Rapeseed Oil
+2026-06-27 12:55:09 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:09 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:10 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1155 completion=759 total=1914
+2026-06-27 12:55:10 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:10 [INFO    ] api.main: LLM plan ready — year=2026 week=23
+2026-06-27 12:55:10 [INFO    ] api.main: Menu saved — year=2026 week=23 fallback=False
+2026-06-27 12:55:13 [INFO    ] api.main: Generate request — year=2026 week=24
+2026-06-27 12:55:13 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-08
+2026-06-27 12:55:13 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Monday [mediterranean]: Oysters + Trenette + Organic Watercress + Sichuan Chili Oil
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Tuesday [asian]: Fresh Whiteleg Shrimp + Wild Rice + Organic Poblano Peppers + Table Salt
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Whole Duck + Gluten-free Crispbread + Hijiki + Steak Sauce
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Thursday [middle_eastern]: Fresh Scallops + Bagels + Organic Drumstick Pods + Low-fat Ayran
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Friday [mediterranean]: Free-range Oxtail + Naan + Black Truffle + Cajun Seasoning
+2026-06-27 12:55:13 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:13 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Mozzarella + Multigrain Bread + Organic Cucumbers + Pizza Sauce
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Parmesan + Organic Glutinous Rice + Organic Red Bell Peppers + Goat Milk Yogurt
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Liquid Egg Whites + Gluten-free Pumpernickel + Organic Cabbage + Sorrel
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Thursday [middle_eastern]: Sliced Robiola + Red Rice + Sea Beans + Low-fat Skyr
+2026-06-27 12:55:13 [INFO    ] engine.composer:   Friday [mediterranean]: Morbier + Gluten-free Ramen Noodles + Napa Cabbage + Furikake
+2026-06-27 12:55:13 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:13 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:15 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1136 completion=736 total=1872
+2026-06-27 12:55:15 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:15 [INFO    ] api.main: LLM plan ready — year=2026 week=24
+2026-06-27 12:55:15 [INFO    ] api.main: Menu saved — year=2026 week=24 fallback=False
+2026-06-27 12:55:17 [INFO    ] api.main: Generate request — year=2026 week=25
+2026-06-27 12:55:17 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-06-15
+2026-06-27 12:55:17 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh Surimi + Rye Berries + Organic Bamboo Shoots + Mayonnaise
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Tuesday [asian]: Salmon Fillet + Gluten-free Barbari Bread + Daikon Radish + Karashi Mustard Powder
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Venison + Strozzapreti + Eggplant + Ground Curry Powder
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Thursday [middle_eastern]: Squid + Whole Grain Spelt + Pea Shoots + Reduced-sodium Barbecue Sauce
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Friday [mediterranean]: Fresh Herring + Gluten-free Chapati + Organic Bitter Gourd + Ranch Dressing
+2026-06-27 12:55:17 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:17 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Monday [mediterranean]: Cantal + Quick-cook Brown Basmati Rice + Organic Napa Cabbage + Low-fat Strained Greek Yogurt
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Panela + Pain de Campagne + Shiitake Mushrooms + Vegetable Stock
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Wednesday [nordic]: Canned Mung Beans + Gluten-free Macaroni + Organic Onions + Reduced-sodium Pizza Sauce
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Thursday [middle_eastern]: Split Peas + Organic Red Rice + Fresh Shiitake Mushrooms + Dried Arbol Chiles
+2026-06-27 12:55:17 [INFO    ] engine.composer:   Friday [mediterranean]: Pressed Tofu + Paratha + Organic Radishes + Reduced-sodium Vegetable Gravy
+2026-06-27 12:55:17 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:17 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:19 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1151 completion=689 total=1840
+2026-06-27 12:55:19 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:19 [INFO    ] api.main: LLM plan ready — year=2026 week=25
+2026-06-27 12:55:19 [INFO    ] api.main: Menu saved — year=2026 week=25 fallback=False
+2026-06-27 12:55:21 [INFO    ] api.main: Generate request — year=2026 week=29
+2026-06-27 12:55:21 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-13
+2026-06-27 12:55:21 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Monday [mediterranean]: Free-range Chicken Backs + Gluten-free Lasagne Sheets + Chanterelle Mushrooms + Vegetable Gravy
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Tuesday [asian]: Smoked Fuet + Gluten-free Glass Noodles + Ivy Gourd + Whole-grain Mustard
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Wednesday [nordic]: Bacon + Gluten-free Tagliatelle + Fresh Maitake Mushrooms + Nam Prik Pao
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Thursday [middle_eastern]: Smoked Nduja + Quick-cook Wild Rice + Organic Eggplant + Dashi Powder
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Friday [mediterranean]: Free-range Beef Stew Meat + Spinach Tagliatelle + Organic Cluster Beans + Oat Yogurt
+2026-06-27 12:55:21 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:21 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Monday [mediterranean]: Grated Aged 24mo Parmesan + Breadsticks + Dried Reishi Mushrooms + Tarama
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Akkawi + Whole Grain Sorghum + Organic Mache + Cold-pressed Pumpkin Seed Oil
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Wednesday [nordic]: Triple-cream Brie + Rice Vermicelli + Snap Peas + Low-fat Strained Greek Yogurt
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Thursday [middle_eastern]: Canned Cranberry Beans + Whole Grain Couscous + Organic Celery + Tabasco
+2026-06-27 12:55:21 [INFO    ] engine.composer:   Friday [mediterranean]: Pecorino Crotonese + Rice Noodles + Plum Tomatoes + Sichuan Sauce
+2026-06-27 12:55:21 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:21 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:23 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1172 completion=891 total=2063
+2026-06-27 12:55:23 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:23 [INFO    ] api.main: LLM plan ready — year=2026 week=29
+2026-06-27 12:55:23 [INFO    ] api.main: Menu saved — year=2026 week=29 fallback=False
+2026-06-27 12:55:24 [INFO    ] api.main: Generate request — year=2026 week=30
+2026-06-27 12:55:24 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-20
+2026-06-27 12:55:24 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh Anchovy Fillets + Long-grain Rice + Organic Cluster Beans + Peppermint
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Tuesday [asian]: Beef Tri-tip + Paratha + Dried Velvet Pioppini + Black Pepper
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Lamb Riblets + Gluten-free Pappardelle + Cabbage + Ground Saffron
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Thursday [middle_eastern]: Fresh Smoked Mussels + Whole Grain Job's Tears + Organic Radishes + Full-fat Labneh
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Friday [mediterranean]: Fresh Squid Tubes + Gluten-free Manakish Base + Bamboo Shoots + Chili Oil
+2026-06-27 12:55:24 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:24 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Monday [mediterranean]: Pistachios + Organic Carnaroli Rice + Cucumbers + Reduced-sodium Veloute Sauce
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Tuesday [asian]: Grated Aged 12mo Parmesan + Gluten-free Ramen Noodles + Fresh Enoki Mushrooms + Shiso Leaves
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Wednesday [nordic]: Navy Beans + Chow Mein Noodles + Organic Cabbage + Reduced-sodium Romesco Sauce
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Thursday [middle_eastern]: Sliced Pecorino Romano + Couscous + Fresh Trumpet Mushrooms + Ground Smoked Paprika
+2026-06-27 12:55:24 [INFO    ] engine.composer:   Friday [mediterranean]: Grated Havarti + Knackerbrot + Fresh Cloud Ear Mushrooms + Rapeseed Oil
+2026-06-27 12:55:24 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:24 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:25 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1155 completion=754 total=1909
+2026-06-27 12:55:25 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:25 [INFO    ] api.main: LLM plan ready — year=2026 week=30
+2026-06-27 12:55:25 [INFO    ] api.main: Menu saved — year=2026 week=30 fallback=False
+2026-06-27 12:55:26 [INFO    ] api.main: Generate request — year=2026 week=31
+2026-06-27 12:55:26 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-07-27
+2026-06-27 12:55:26 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Monday [mediterranean]: John Dory + Organic Wild Rice + Organic Parsnips + Reduced-sodium Pomodoro Sauce
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Beef Cheek + Cavatelli + Organic Spring Onions + Double Cream
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Wednesday [nordic]: Free-range Lamb Shank + Quick-cook Ponni Rice + Kohlrabi + Reduced-sodium Espagnole Sauce
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Thursday [middle_eastern]: Lamb Loin + Whole Grain Quick Oats + Organic Bell Peppers + Pickled Jalapenos
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Friday [mediterranean]: Spatchcock Chicken + Cheese Ravioli + Acorn Squash + Grapeseed Oil
+2026-06-27 12:55:26 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:26 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Monday [mediterranean]: Requeson + Gluten-free Ziti + Organic Kabocha Squash + Peppermint
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Tuesday [asian]: Large Brown Eggs + Jasmine Rice + Morel Mushrooms + Reduced-sodium Mirin
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Wednesday [nordic]: Green Peas + Gluten-free Shirataki Noodles + Serrano Peppers + Blue Cheese Dressing
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Thursday [middle_eastern]: Roasted Pecan Halves + Gluten-free Pastina + Bamboo Shoots + Star Anise
+2026-06-27 12:55:26 [INFO    ] engine.composer:   Friday [mediterranean]: Canned Green Lentils + Trenette + Red Onions + Organic Double Cream
+2026-06-27 12:55:26 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:26 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:27 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1152 completion=763 total=1915
+2026-06-27 12:55:27 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:27 [INFO    ] api.main: LLM plan ready — year=2026 week=31
+2026-06-27 12:55:27 [INFO    ] api.main: Menu saved — year=2026 week=31 fallback=False
+2026-06-27 12:55:28 [INFO    ] api.main: Generate request — year=2026 week=32
+2026-06-27 12:55:28 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-08-03
+2026-06-27 12:55:28 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Monday [mediterranean]: Pork Spare Ribs + Quick-cook Brown Basmati Rice + Green Beans + Coconut Yogurt
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Beef Sirloin + Sourdough Loaf + Organic Chayote Squash + Dried Rosemary
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Wednesday [nordic]: Fresh Bay Scallops + Shirataki Noodles + Soybean Sprouts + Reduced-sodium Gravy
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Thursday [middle_eastern]: Bratwurst + Whole Grain Hulled Millet + Organic Watercress + Reduced-sodium Korma Sauce
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Friday [mediterranean]: Beef Stew Meat + Corn Tortillas + Organic Bamboo Shoots + Kaffir Lime Leaves
+2026-06-27 12:55:28 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:28 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Monday [mediterranean]: Salted Duck Eggs + Country Loaf + Organic Soybean Sprouts + Crema Mexicana
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Roquefort + Lavash Crackers + Dried Lion's Mane Mushrooms + Viili
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Cheddar + Corn Tortillas + Kombu + Ground Sea Salt
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Thursday [middle_eastern]: Canned Cannellini Beans + Lo Mein Noodles + Organic Chayote Squash + Ground Ras El Hanout
+2026-06-27 12:55:28 [INFO    ] engine.composer:   Friday [mediterranean]: Almond Butter + Strozzapreti + Organic Shallots + Korma Sauce
+2026-06-27 12:55:28 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:28 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:29 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1162 completion=766 total=1928
+2026-06-27 12:55:29 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:29 [INFO    ] api.main: LLM plan ready — year=2026 week=32
+2026-06-27 12:55:29 [INFO    ] api.main: Menu saved — year=2026 week=32 fallback=False
+2026-06-27 12:55:30 [INFO    ] api.main: Generate request — year=2026 week=33
+2026-06-27 12:55:30 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-08-10
+2026-06-27 12:55:30 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Monday [mediterranean]: Free-range Beef Chuck + Gluten-free Egg Noodles + Dried Reishi Mushrooms + Crema Catalana Base
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Tuesday [asian]: Smoked Weisswurst + Bhatura + Pumpkin + Skyr
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Wednesday [nordic]: Organic Chicken Gizzards + Whole Wheat Sandwich Bread + Organic Mung Bean Sprouts + Bay Rum Berries
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Duck Liver + Schuttelbrot + Trumpet Mushrooms + Reduced-sodium Chinkiang Vinegar
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Friday [mediterranean]: Organic Turkey Liver + Gluten-free Glass Noodles + Dulse Flakes + Full-fat Blueberry Yogurt
+2026-06-27 12:55:30 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:30 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Lancashire + Anelletti + Zucchini + Cumin
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Tuesday [asian]: Wheat Seitan + Organic Sticky Rice + Organic Globe Artichokes + Reduced-sodium Barbecue Sauce
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Aged Cheddar + Breadsticks + Green Beans + Ground Dried Pasilla Chiles
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grated Wensleydale + Whole Grain Hulled Barley + Organic Yellow Bell Peppers + Ground Berbere Spice Mix
+2026-06-27 12:55:30 [INFO    ] engine.composer:   Friday [mediterranean]: Grated White Cheddar + Pici + Oyster Mushrooms + Vietnamese Pickled Vegetables
+2026-06-27 12:55:30 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:30 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:37 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1164 completion=798 total=1962
+2026-06-27 12:55:37 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:37 [INFO    ] api.main: LLM plan ready — year=2026 week=33
+2026-06-27 12:55:38 [INFO    ] api.main: Menu saved — year=2026 week=33 fallback=False
+2026-06-27 12:55:40 [INFO    ] api.main: Generate request — year=2026 week=34
+2026-06-27 12:55:40 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-08-17
+2026-06-27 12:55:40 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh King Crab Legs + Ramen Noodles + Carrots + Cocktail Sauce
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Tuesday [asian]: Beef Sirloin + Barley + Dried White Mushrooms + Nuoc Cham
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Wednesday [nordic]: Lamb Leg + Wheat Germ + Ivy Gourd + Galangal Root
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Thursday [middle_eastern]: Organic Duck Confit + Whole Grain Red Quinoa + Dried Lion's Mane Mushrooms + Annatto Seeds
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Friday [mediterranean]: Mortadella + Gluten-free Pici + Organic Anaheim Peppers + Cardamom
+2026-06-27 12:55:40 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:40 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Tilsit + Whole Grain Polenta + Eggplant + Sheep Butter
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Tuesday [asian]: Canned Edamame Beans + Organic Forbidden Black Rice + Avocados + Ghee
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Selles-sur-Cher + Carnaroli Rice + Turnips + Ground Mitmita
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Thursday [middle_eastern]: Canned Roman Beans + Mantou + Asian Eggplant + Ground Dried Cascabel Chiles
+2026-06-27 12:55:40 [INFO    ] engine.composer:   Friday [mediterranean]: Roasted Marcona Almonds + Casarecce + Organic Swiss Chard + Low-fat Strained Greek Yogurt
+2026-06-27 12:55:40 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:40 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:47 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1139 completion=821 total=1960
+2026-06-27 12:55:47 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:47 [INFO    ] api.main: LLM plan ready — year=2026 week=34
+2026-06-27 12:55:47 [INFO    ] api.main: Menu saved — year=2026 week=34 fallback=False
+2026-06-27 12:55:49 [INFO    ] api.main: Generate request — year=2026 week=36
+2026-06-27 12:55:49 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-08-31
+2026-06-27 12:55:49 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Monday [mediterranean]: Organic Spatchcock Chicken + Gluten-free Spaghetti + Bunashimeji Mushrooms + Macadamia Oil
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Beef Short Ribs + Organic Aged Basmati Rice + Anaheim Peppers + Low-fat Salted Lassi
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Wednesday [nordic]: Grass-fed Lamb Shank + Organic Sticky Rice + Dried Porcini Powder + Dried Pandan Leaves
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Thursday [middle_eastern]: Herring + Gluten-free Cheese Ravioli + Sweet Potatoes + Avocado Oil
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Friday [mediterranean]: Cornish Hen + Gluten-free Mantou + Mung Bean Sprouts + Whipping Cream
+2026-06-27 12:55:49 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:55:49 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Monday [mediterranean]: Aged Gouda + Whole Grain Kamut Berries + Cabbage + Full-fat Dahi
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Tuesday [asian]: Sliced Smoked Paneer + Gluten-free Chow Mein Noodles + Organic Habanero Peppers + Cocktail Sauce
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Gorgonzola + Gluten-free Idli + Shallots + Organic Ghee
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Thursday [middle_eastern]: Roasted Pine Nuts + Hamburger Buns + Organic Napa Cabbage + Reduced-sodium Marinara Sauce
+2026-06-27 12:55:49 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Feta + Rice Noodles + Organic Endive + Reduced-sodium Alfredo Sauce
+2026-06-27 12:55:49 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:55:49 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:55:58 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1167 completion=787 total=1954
+2026-06-27 12:55:58 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:55:58 [INFO    ] api.main: LLM plan ready — year=2026 week=36
+2026-06-27 12:55:58 [INFO    ] api.main: Menu saved — year=2026 week=36 fallback=False
+2026-06-27 12:57:52 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
+2026-06-27 12:58:01 [INFO    ] api.main: Generate request — year=2026 week=35
+2026-06-27 12:58:01 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-08-24
+2026-06-27 12:58:01 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Monday [mediterranean]: Clams + Corn Tortillas + Dried Oyster Mushrooms + Calabrian Chili Paste
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Tuesday [asian]: Free-range Whole Duck + Pad Thai Rice Noodles + Hatch Chiles + Smoked Salt
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Wednesday [nordic]: Pork Loin + Mantou + Spring Onions + Red Miso Paste
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Thursday [middle_eastern]: Organic Chicken Tenders + Gluten-free Sopes + Anaheim Peppers + Low-fat Goat Milk Yogurt
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Friday [mediterranean]: Grass-fed Beef Cheek + Pumpkin Ravioli + Nopales + Dried Lemongrass
+2026-06-27 12:58:01 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:58:01 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Truffle Cheese + Gluten-free Spaghetti + Organic Yams + Cream of Mushroom Sauce
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Tuesday [asian]: Organic Pea Protein Crumbles + Kulcha + Maitake Mushrooms + Sansho Pepper
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Wednesday [nordic]: Gouda + Gluten-free Bhatura + Organic Red Onions + Olive Tapenade
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Thursday [middle_eastern]: Marzipan + Sopes + Organic Swiss Chard + Ground Sichuan Peppercorns
+2026-06-27 12:58:01 [INFO    ] engine.composer:   Friday [mediterranean]: Triple-cream Brie + Gluten-free Pici + Jalapeno Peppers + Pumpkin Seed Oil
+2026-06-27 12:58:01 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:58:01 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:58:03 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1189 completion=811 total=2000
+2026-06-27 12:58:03 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:58:03 [INFO    ] api.main: LLM plan ready — year=2026 week=35
+2026-06-27 12:58:03 [INFO    ] api.main: Menu saved — year=2026 week=35 fallback=False
+2026-06-27 12:58:05 [INFO    ] api.main: Generate request — year=2026 week=37
+2026-06-27 12:58:05 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-09-07
+2026-06-27 12:58:05 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Monday [mediterranean]: Spot Prawns + Hokkien Noodles + Edamame + Red Palm Oil
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Tuesday [asian]: Fresh Carp + Gluten-free Mantou + Asian Eggplant + Cold-pressed Lemon Olive Oil
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Wednesday [nordic]: Smoked Pancetta + Whole Grain Polenta + Bell Peppers + Cold-pressed Sesame Oil
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Thursday [middle_eastern]: Organic Whole Chicken + Whole Grain Hulled Millet + Radicchio + Dijon Mustard
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Friday [mediterranean]: Mettwurst + Khorasan Wheat + Organic Habanero Peppers + Alfredo Sauce
+2026-06-27 12:58:05 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 12:58:05 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Monday [mediterranean]: Canned Marrowfat Peas + Polenta + Radicchio + Ground Cajun Seasoning
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Tuesday [asian]: Grated Mahon + Gluten-free White Sandwich Bread + Salsify + Manufacturing Cream
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Wednesday [nordic]: Sliced Queso Asadero + Kulcha + Long Beans + Sambal Bajak
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Thursday [middle_eastern]: Pheasant Eggs + Gluten-free Orzo + Dried Morel Mushrooms + Full-fat Buffalo Milk Yogurt
+2026-06-27 12:58:05 [INFO    ] engine.composer:   Friday [mediterranean]: Quail Egg Yolks + Gluten-free Flour Tortillas + Garlic + Ground Ras El Hanout
+2026-06-27 12:58:05 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 12:58:05 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 12:58:07 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1195 completion=705 total=1900
+2026-06-27 12:58:07 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 12:58:07 [INFO    ] api.main: LLM plan ready — year=2026 week=37
+2026-06-27 12:58:07 [WARNING ] api.main: Validation failed for year=2026 week=37: ['meat: weekly cost 20.42 EUR exceeds budget of 20.10 EUR']
+2026-06-27 13:40:58 [INFO    ] api.main: Heyra Menu Generator started — catalogue loaded
+2026-06-27 13:41:06 [INFO    ] api.main: Generate request — year=2026 week=37
+2026-06-27 13:41:07 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-09-07
+2026-06-27 13:41:07 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Monday [mediterranean]: Fresh Herring + Breadsticks + Nopales + Pineapple Yogurt
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Tuesday [asian]: Veal Osso Buco + Oat Bran + Edamame + Ethiopian Berbere
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Wednesday [nordic]: Striped Bass + Quick-cook Short-grain Rice + Fresh Lobster Mushrooms + Reduced-sodium Shaoxing Wine
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Thursday [middle_eastern]: Free-range Kobe Beef + Whole Grain Hulled Millet + Globe Artichokes + Cold-pressed Peanut Oil
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Friday [mediterranean]: Organic Partridge + Shirataki Noodles + Edamame + Dried Summer Savory
+2026-06-27 13:41:07 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 13:41:07 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Monday [mediterranean]: Smoked Gouda + Lavash Crackers + Organic Artichokes + Sweet Bean Sauce
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Tuesday [asian]: Burrata + Quinoa + Arugula + Achiote Powder
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Wednesday [nordic]: Pressed Tofu + Country Loaf + Celery + Sweet Bean Sauce
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Thursday [middle_eastern]: Sliced Vegan Cashew Cheese + Whole Grain Red Quinoa + Sweet Potatoes + Strawberry Yogurt
+2026-06-27 13:41:07 [INFO    ] engine.composer:   Friday [mediterranean]: Sliced Triple-cream Brie + Lasagne Sheets + Organic Onions + Organic European-style Butter
+2026-06-27 13:41:07 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 13:41:07 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 13:41:09 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1188 completion=840 total=2028
+2026-06-27 13:41:09 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 13:41:09 [INFO    ] api.main: LLM plan ready — year=2026 week=37
+2026-06-27 13:41:09 [INFO    ] api.main: Menu saved — year=2026 week=37 fallback=False
+2026-06-27 13:42:06 [INFO    ] api.main: Generate request — year=2026 week=38
+2026-06-27 13:42:06 [INFO    ] engine.groq_llama: Composing dishes for week_start=2026-09-14
+2026-06-27 13:42:06 [INFO    ] engine.composer: Composing week — track=meat
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Monday [mediterranean]: Smoked Honey-glazed Ham + Tortellini + Leeks + Sorrel
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Tuesday [asian]: Fresh Black Cod + Gluten-free Pita Bread + Fresh Lobster Mushrooms + Pumpkin Seed Oil
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Wednesday [nordic]: Beef Tri-tip + Gluten-free Lo Mein Noodles + Organic Leeks + Adobo Seasoning
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Thursday [middle_eastern]: Grass-fed Beef Bavette + Pretzels + Organic Spring Onions + Oat Yogurt
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Friday [mediterranean]: Bratwurst + Gluten-free Bao Buns + Porcini Mushrooms + Sichuan Sauce
+2026-06-27 13:42:06 [INFO    ] engine.composer: Composition complete — track=meat (5 dishes)
+2026-06-27 13:42:06 [INFO    ] engine.composer: Composing week — track=vegetarian
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Monday [mediterranean]: Sliced Stracchino + Gluten-free Dumpling Wrappers + Broccoli + Rasam Powder
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Tuesday [asian]: Kidney Beans + Arepas + Romanesco + Vegan Mayonnaise
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Wednesday [nordic]: Scamorza + Gluten-free Ravioli + Organic Salsify + Ground White Pepper
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Thursday [middle_eastern]: Canned Red Lentils + Conchiglie + Lion's Mane Mushrooms + Shichimi Togarashi
+2026-06-27 13:42:06 [INFO    ] engine.composer:   Friday [mediterranean]: Roasted Almond Butter + Whole Grain Cracked Wheat + Organic Red Bell Peppers + Ground Sichuan Peppercorns
+2026-06-27 13:42:06 [INFO    ] engine.composer: Composition complete — track=vegetarian (5 dishes)
+2026-06-27 13:42:06 [INFO    ] engine.groq_llama: LLM naming call — attempt 1/3
+2026-06-27 13:42:08 [INFO    ] engine.groq_llama: tokens attempt=1 prompt=1201 completion=759 total=1960
+2026-06-27 13:42:08 [INFO    ] engine.groq_llama: Valid naming received on attempt 1
+2026-06-27 13:42:08 [INFO    ] api.main: LLM plan ready — year=2026 week=38
+2026-06-27 13:42:08 [INFO    ] api.main: Menu saved — year=2026 week=38 fallback=False
