@@ -186,7 +186,7 @@ products.csv
 
 The current composer samples ingredients using cuisine-weighted randomness at the ingredient-group level. Several improvements are possible:
 
-- **Flavour-profile labels per ingredient** — adding a `flavour_profile` attribute (e.g. savoury / sweet / sour / bitter) at the individual product level rather than the group level would let the composer enforce basic culinary coherence before the LLM step. Any labelled dataset found online would be sufficient; this was not the main focus of the project.
+- **Flavour-profile labels per ingredient** — adding a `flavour_profile` attribute (e.g. savoury / sweet / sour / bitter) at the individual product level rather than the group level would let the composer enforce basic culinary coherence before the LLM step. Any labelled dataset found online would be sufficient; however this was not the main focus of the project.
 - **Cuisine tags per product** — currently every product inherits the tag of its group. A per-product tag would give the composer finer-grained control over dish coherence.
 
 **Inventory and demand forecasting**
